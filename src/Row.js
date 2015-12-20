@@ -2,13 +2,10 @@ import React, { Component } from 'react';
 
 export default class Row extends Component {
 
-  constructor() {
-    super();
-  }
-
   render() {
     return (
       <div
+        className={this.props.className}
         ref={(ref) => this.row = ref}>
         {this.props.children}
       </div>

@@ -18,16 +18,18 @@ export default class Salvager extends Component {
   render() {
     return (
       <div
-        className={this.props.className}
+        className={this.props.visibleAreaClassName}
         onScroll={this._scrollHandler.bind(this)}
         ref={(ref) => this.visibleArea = ref}
         style={{ position: 'relative', overflow: 'auto' }}>
         <div
+          className={this.props.rowWrapperClassName}
           ref={(ref) => this.rowWrapper = ref}
           style={{ transform: this.state.rowWrapperTransform }}>
           {this._buildRows()}
         </div>
         <div
+          className={this.props.spacerClassName}
           style={{ height: this._getSpacerHeight() }}
         />
       </div>
@@ -51,6 +53,7 @@ export default class Salvager extends Component {
     for (let i = 0, j = this.props.bufferSize; i < j; i++) {
       rows.push(
         <RenderedRow
+          className={this.props.rowClassName}
           key={i}
           ref={(ref) => { if (!this.row) this.row = ref; }}>
           {this.props.data[this.state.bufferStart + i]}
