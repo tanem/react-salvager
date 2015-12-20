@@ -1,22 +1,39 @@
 {
   "name": "react-salvager",
   "version": "1.0.0",
-  "description": "A React component that recycles row elements.",
+  "description": "Reuse row elements when displaying large datasets.",
   "main": "lib/react-salvager.js",
-  "directories": {
-    "example": "example",
-    "test": "test"
+  "homepage": "https://github.com/tanem/react-salvager",
+  "bugs": {
+    "url": "http://github.com/tanem/react-salvager/issues"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tanem/react-salvager.git"
+  },
+  "author": {
+    "name": "Tane Morgan",
+    "url": "http://github.com/tanem"
+  },
+  "license": "MIT",
+  "keywords": [
+    "data",
+    "javascript",
+    "list",
+    "react",
+    "react-component",
+    "reactjs",
+    "recycle",
+    "scroll",
+    "table"
+  ],
   "scripts": {
     "lint": "eslint src test",
-    "build:umd": "webpack src/Salvager.js dist/Salvager.js --config webpack.config.dev.js",
     "test:spec": "NODE_ENV=test mocha --recursive --compilers js:babel-core/register",
     "test:watch": "npm run test:spec -- --watch",
     "start:server": "node server.js",
     "start": "parallelshell 'npm run start:server' 'npm run test:watch'"
   },
-  "author": "",
-  "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.2.1",
     "babel-eslint": "^4.1.6",
@@ -27,7 +44,6 @@
     "eslint": "^1.10.3",
     "eslint-plugin-react": "^3.11.3",
     "express": "^4.13.3",
-    "jsdom": "^7.2.1",
     "mocha": "^2.3.4",
     "parallelshell": "^2.0.0",
     "react": "^0.14.3",
@@ -44,7 +60,6 @@
   },
   "dependencies": {
     "clamp": "^1.0.1",
-    "classnames": "^2.2.1",
     "lodash.isfunction": "^3.0.6"
   }
 }
