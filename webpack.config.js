@@ -29,11 +29,17 @@ module.exports = {
   ],
 
   module: {
-    loaders: [{
-      test: /\.js$/,
-      loaders: ['react-hot', 'babel'],
-      exclude: /node_modules/
-    }]
+    loaders: [
+      {
+        test: /\.js$/,
+        loaders: ['react-hot', 'babel'],
+        exclude: /node_modules/
+      },
+      {
+        test: /\.scss$/,
+        loader: 'style!css!sass'
+      }
+    ]
   },
 
   output: {
