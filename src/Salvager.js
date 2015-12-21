@@ -7,7 +7,6 @@ export default class Salvager extends Component {
 
   constructor(props) {
     super(props);
-    this._scrollHandler = this._scrollHandler.bind(this);
     this.state = {
       bufferStart: 0,
       isUpdating: false,
@@ -20,6 +19,7 @@ export default class Salvager extends Component {
     return (
       <div
         className="Salvager-visibleArea"
+        onScroll={this._scrollHandler.bind(this)}
         ref={(ref) => this.visibleArea = ref}
         style={{ position: 'relative' }}>
         <div
@@ -37,7 +37,6 @@ export default class Salvager extends Component {
   }
 
   componentDidMount() {
-    this.visibleArea.addEventListener('scroll', this._scrollHandler);
     if (!isFunction(this.row.getHeight)) {
       throw new Error('Row component must define a getHeight method.');
     }
@@ -45,10 +44,6 @@ export default class Salvager extends Component {
       rowHeight: this.row.getHeight(),
       visibleAreaOffsetHeight: this.visibleArea.offsetHeight
     });
-  }
-
-  componentWillUnmount() {
-    this.visibleArea.removeEventListener('scroll', this._srollHandler);
   }
 
   _buildRows() {
