@@ -9,7 +9,6 @@ export default class Row extends Component {
   render() {
     return (
       <div
-        className="Salvager-row"
         ref={(ref) => this.row = ref}>
         {this.props.children}
       </div>
