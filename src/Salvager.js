@@ -21,7 +21,7 @@ export default class Salvager extends Component {
         className={this.props.className}
         onScroll={this._scrollHandler.bind(this)}
         ref={(ref) => this.visibleArea = ref}
-        style={{ position: 'relative' }}>
+        style={{ position: 'relative', overflow: 'auto' }}>
         <div
           ref={(ref) => this.rowWrapper = ref}
           style={{ transform: this.state.rowWrapperTransform }}>
