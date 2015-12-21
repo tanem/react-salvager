@@ -4,6 +4,7 @@ import Salvager from '../src/Salvager';
 
 ReactDOM.render(
   <Salvager
+    className={'Salvager-visibleArea'}
     bufferSize={50}
     data={getData(500000)}
     getRow={getRow}

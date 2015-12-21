@@ -18,18 +18,16 @@ export default class Salvager extends Component {
   render() {
     return (
       <div
-        className="Salvager-visibleArea"
+        className={this.props.className}
         onScroll={this._scrollHandler.bind(this)}
         ref={(ref) => this.visibleArea = ref}
         style={{ position: 'relative' }}>
         <div
-          className="Salvager-rowWrapper"
           ref={(ref) => this.rowWrapper = ref}
           style={{ transform: this.state.rowWrapperTransform }}>
           {this._buildRows()}
         </div>
         <div
-          className="Salvager-spacer"
           style={{ height: this._getSpacerHeight() }}
         />
       </div>
