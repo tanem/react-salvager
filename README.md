@@ -8,19 +8,12 @@ _Work in progress_
 
 A React port of [salvager](https://github.com/tanem/salvager).
 
-## Example
+## Examples
 
-A working example is contained in the `example/` dir. To view it, first you'll need to kick off the server:
+Two examples are contained in the `examples/` dir. In order to view them, you'll first need to kick off the server via `npm start`. Note that the server itself is actually a [webpack-dev-server](https://webpack.github.io/docs/webpack-dev-server.html) with [react hot loading](https://github.com/gaearon/react-hot-loader) enabled, so you can use this setup for development too.
 
-```
-$ npm start
-```
-
-Then you'll need to point a browser at `http://localhost:3000/`, which will open `example/index.html`.
-
-## Development
-
-The server is actually a [webpack-dev-server](https://webpack.github.io/docs/webpack-dev-server.html) with [react hot loading](https://github.com/gaearon/react-hot-loader) enabled. You can use the running [example](#example) to quickly test changes.
+- The default example uses the built-in `Row` component, and can be viewed at `http://localhost:3000/examples/default/`
+- The custom example uses a custom `Row` component, and can be viewed at `http://localhost:3000/examples/custom/`
 
 ## Testing
 
