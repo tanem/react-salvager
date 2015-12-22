@@ -6,7 +6,6 @@ var webpack = require('webpack');
 module.exports = {
 
   devServer: {
-    historyApiFallback: { index: 'example/index.html' },
     host: 'localhost',
     hot: true,
     port: 3000,
@@ -22,11 +21,18 @@ module.exports = {
 
   devtool: 'cheap-module-eval-source-map',
 
-  entry: [
-    'webpack-dev-server/client?http://localhost:3000',
-    'webpack/hot/only-dev-server',
-    './example/main.js'
-  ],
+  entry: {
+    custom: [
+      'webpack-dev-server/client?http://localhost:3000',
+      'webpack/hot/only-dev-server',
+      './examples/custom/main.js'
+    ],
+    default: [
+      'webpack-dev-server/client?http://localhost:3000',
+      'webpack/hot/only-dev-server',
+      './examples/default/main.js'
+    ]
+  },
 
   module: {
     loaders: [
@@ -43,7 +49,7 @@ module.exports = {
   },
 
   output: {
-    path: path.resolve('example'),
+    path: path.resolve('examples'),
     filename: '[name].bundle.js',
     publicPath: '/static/'
   },

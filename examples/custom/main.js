@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import Salvager from '../src/Salvager';
+import Salvager from '../../src/Salvager';
 
 import './main.scss';
 
