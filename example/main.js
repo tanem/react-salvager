@@ -6,7 +6,7 @@ import './main.scss';
 
 ReactDOM.render(
   <Salvager
-    className={'Salvager-visibleArea'}
+    visibleAreaClassName={'Salvager-visibleArea'}
     bufferSize={50}
     data={getData(500000)}
     getRow={getRow}
@@ -22,10 +22,6 @@ function getData(size) {
 
 function getRow() {
   return class Row extends Component {
-
-    constructor() {
-      super();
-    }
 
     render() {
       return (
