@@ -1,8 +1,10 @@
 # react-salvager
 
-[![build status](https://img.shields.io/travis/tanem/react-salvager/master.svg?style=flat-square)](https://travis-ci.org/tanem/react-salvager)
+[![Build status](https://img.shields.io/travis/tanem/react-salvager/master.svg?style=flat-square)](https://travis-ci.org/tanem/react-salvager)
+[![Dependency status](https://david-dm.org/tanem/react-salvager.svg?style=flat-square)](https://david-dm.org/tanem/react-salvager)
+[![Dev dependency status](https://david-dm.org/tanem/react-salvager/dev-status.svg?style=flat-square)](https://david-dm.org/tanem/react-salvager#info=devDependencies)
 
-[![Sauce Test Status](https://saucelabs.com/browser-matrix/react-salvager.svg)](https://saucelabs.com/u/react-salvager)
+[![Sauce test status](https://saucelabs.com/browser-matrix/react-salvager.svg)](https://saucelabs.com/u/react-salvager)
 
 _Work in progress_
 
