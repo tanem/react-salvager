@@ -12,6 +12,12 @@ A React port of [salvager](https://github.com/tanem/salvager):
 
 It's worth noting that the algorithm used in this port is simpler than the one used in the original salvager module. This came about after thinking more carefully about [the minimal set of mutable state](https://facebook.github.io/react/docs/thinking-in-react.html#step-3-identify-the-minimal-but-complete-representation-of-ui-state) the module needed.
 
+## Installation
+
+```
+$ npm i -S react-salvager
+```
+
 ## Examples
 
 Two examples are contained in the `examples/` dir. In order to view them, you'll first need to kick off the server via `npm start`. Note that the server itself is actually a [webpack-dev-server](https://webpack.github.io/docs/webpack-dev-server.html) with [react hot loading](https://github.com/gaearon/react-hot-loader) enabled, so you can use this setup for development too.
