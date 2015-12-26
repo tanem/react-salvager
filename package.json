@@ -2,7 +2,7 @@
   "name": "react-salvager",
   "version": "1.0.2",
   "description": "Reuse row elements when displaying large datasets.",
-  "main": "lib/react-salvager.js",
+  "main": "lib/Salvager.js",
   "homepage": "https://github.com/tanem/react-salvager",
   "bugs": {
     "url": "http://github.com/tanem/react-salvager/issues"
@@ -31,9 +31,11 @@
     "lint": "eslint src test",
     "test:local": "karma start karma.conf.js",
     "test": "karma start karma.conf-ci.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "prepublish": "npm run lint && babel src -d lib"
   },
   "devDependencies": {
+    "babel-cli": "^6.3.17",
     "babel-core": "^6.2.1",
     "babel-eslint": "^4.1.6",
     "babel-loader": "^6.2.0",
