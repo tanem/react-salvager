@@ -26,6 +26,7 @@ function getRow() {
     render() {
       return (
         <div
+          className={this.props.className}
           ref={(ref) => this.row = ref}
           style={{
             backgroundColor: this._getBackgroundColour(),

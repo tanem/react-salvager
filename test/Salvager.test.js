@@ -1,3 +1,5 @@
+import 'babel-polyfill';
+
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import ReactTestUtils from 'react-addons-test-utils';
@@ -11,7 +13,10 @@ function getRow() {
   return class Row extends Component {
     render() {
       return (
-        <div>{this.props.children}</div>
+        <div
+          className={this.props.className}>
+          {this.props.children}
+        </div>
       );
     }
 
@@ -39,6 +44,7 @@ describe('Salvager', () => {
         visibleAreaClassName={'Salvager-visibleArea'}
         rowWrapperClassName={'Salvager-rowWrapper'}
         spacerClassName={'Salvager-spacer'}
+        rowClassName={'Salvager-row'}
         bufferSize={4}
         data={['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6']}
         getRow={getRow}
@@ -69,11 +75,21 @@ describe('Salvager', () => {
     const orglTransform = getTransform();
     scroll(10);
     expect(getTransform()).to.equal(orglTransform);
+    expect(
+      [...$(root).find('.Salvager-row')].map((row) => $(row).text())
+    ).to.deep.equal(
+      ['Item 1', 'Item 2', 'Item 3', 'Item 4']
+    );
   });
 
   it('should update the row buffer if the scroll was significant', () => {
     scroll(40);
     expect(getTransform()).to.equal('translateY(20px)');
+    expect(
+      [...$(root).find('.Salvager-row')].map((row) => $(row).text())
+    ).to.deep.equal(
+      ['Item 2', 'Item 3', 'Item 4', 'Item 5']
+    );
   });
 
 });
