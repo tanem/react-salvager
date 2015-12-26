@@ -1,6 +1,8 @@
 # react-salvager
 
 [![Build status](https://img.shields.io/travis/tanem/react-salvager/master.svg?style=flat-square)](https://travis-ci.org/tanem/react-salvager)
+[![npm version](https://img.shields.io/npm/v/react-salvager.svg?style=flat-square)](https://www.npmjs.com/package/react-salvager)
+[![npm downloads](https://img.shields.io/npm/dm/react-salvager.svg?style=flat-square)](https://www.npmjs.com/package/react-salvager)
 [![Dependency status](https://david-dm.org/tanem/react-salvager.svg?style=flat-square)](https://david-dm.org/tanem/react-salvager)
 [![Dev dependency status](https://david-dm.org/tanem/react-salvager/dev-status.svg?style=flat-square)](https://david-dm.org/tanem/react-salvager#info=devDependencies)
 
