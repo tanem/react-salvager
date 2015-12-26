@@ -6,9 +6,11 @@
 
 [![Sauce test status](https://saucelabs.com/browser-matrix/react-salvager.svg)](https://saucelabs.com/u/react-salvager)
 
-_Work in progress_
+A React port of [salvager](https://github.com/tanem/salvager):
 
-A React port of [salvager](https://github.com/tanem/salvager).
+> Reuse row elements when displaying large datasets. This is beneficial to performance since the number of row elements rendered to the DOM is fixed, no matter how big the dataset is.
+
+It's worth noting that the algorithm used in this port is simpler than the one used in the original salvager module. This came about after thinking more carefully about [the minimal set of mutable state](https://facebook.github.io/react/docs/thinking-in-react.html#step-3-identify-the-minimal-but-complete-representation-of-ui-state) the module needed.
 
 ## Examples
 
