@@ -29,7 +29,7 @@
   ],
   "scripts": {
     "clean": "rimraf lib",
-    "lint": "eslint src test",
+    "lint": "eslint .",
     "test:local": "karma start karma.conf.js",
     "test": "karma start karma.conf-ci.js",
     "start": "node server.js",
