@@ -25,7 +25,7 @@ function getRow() {
 
     render() {
       return (
-        <div
+        <li
           className={this.props.className}
           ref={(ref) => this.row = ref}
           style={{
@@ -33,7 +33,7 @@ function getRow() {
             padding: 10
           }}>
           {this.props.children}
-        </div>
+        </li>
       );
     }
 

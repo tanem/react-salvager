@@ -21,13 +21,19 @@ export default class Salvager extends Component {
         className={this.props.visibleAreaClassName}
         onScroll={this._scrollHandler.bind(this)}
         ref={(ref) => this.visibleArea = ref}
-        style={{ position: 'relative', overflow: 'auto' }}>
-        <div
+        style={{ overflow: 'auto' }}>
+        <ol
           className={this.props.rowWrapperClassName}
           ref={(ref) => this.rowWrapper = ref}
-          style={{ transform: this.state.rowWrapperTransform }}>
+          style={{
+            listStyleType: 'none',
+            marginBottom: 0,
+            marginTop: 0,
+            paddingLeft: 0,
+            transform: this.state.rowWrapperTransform
+          }}>
           {this._buildRows()}
-        </div>
+        </ol>
         <div
           className={this.props.spacerClassName}
           style={{ height: this._getSpacerHeight() }}
