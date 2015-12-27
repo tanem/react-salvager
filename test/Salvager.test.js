@@ -13,10 +13,10 @@ function getRow() {
   return class Row extends Component {
     render() {
       return (
-        <div
+        <li
           className={this.props.className}>
           {this.props.children}
-        </div>
+        </li>
       );
     }
 

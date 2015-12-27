@@ -4,11 +4,11 @@ export default class Row extends Component {
 
   render() {
     return (
-      <div
+      <li
         className={this.props.className}
         ref={(ref) => this.row = ref}>
         {this.props.children}
-      </div>
+      </li>
     );
   }
 
