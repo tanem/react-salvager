@@ -1,12 +1,13 @@
 # react-salvager
 
-[![Build status](https://img.shields.io/travis/tanem/react-salvager/master.svg?style=flat-square)](https://travis-ci.org/tanem/react-salvager)
+[![build status](https://img.shields.io/travis/tanem/react-salvager/master.svg?style=flat-square)](https://travis-ci.org/tanem/react-salvager)
+[![coverage status](https://img.shields.io/coveralls/tanem/react-salvager.svg?style=flat-square)](https://coveralls.io/github/tanem/react-salvager)
 [![npm version](https://img.shields.io/npm/v/react-salvager.svg?style=flat-square)](https://www.npmjs.com/package/react-salvager)
 [![npm downloads](https://img.shields.io/npm/dm/react-salvager.svg?style=flat-square)](https://www.npmjs.com/package/react-salvager)
-[![Dependency status](https://david-dm.org/tanem/react-salvager.svg?style=flat-square)](https://david-dm.org/tanem/react-salvager)
-[![Dev dependency status](https://david-dm.org/tanem/react-salvager/dev-status.svg?style=flat-square)](https://david-dm.org/tanem/react-salvager#info=devDependencies)
+[![dependency status](https://david-dm.org/tanem/react-salvager.svg?style=flat-square)](https://david-dm.org/tanem/react-salvager)
+[![dev dependency status](https://david-dm.org/tanem/react-salvager/dev-status.svg?style=flat-square)](https://david-dm.org/tanem/react-salvager#info=devDependencies)
 
-[![Sauce test status](https://saucelabs.com/browser-matrix/react-salvager.svg)](https://saucelabs.com/u/react-salvager)
+[![sauce test status](https://saucelabs.com/browser-matrix/react-salvager.svg)](https://saucelabs.com/u/react-salvager)
 
 A React port of [salvager](https://github.com/tanem/salvager):
 
@@ -37,7 +38,7 @@ To run the tests locally using Chrome:
 $ npm run test:local
 ```
 
-Travis will also run the tests via [Sauce Labs](https://saucelabs.com/) when changes are pushed.
+Travis will also run the tests via [Sauce Labs](https://saucelabs.com/) when changes are pushed. To view the code coverage report, open `coverage/html/index.html` in a browser.
 
 ## License
 

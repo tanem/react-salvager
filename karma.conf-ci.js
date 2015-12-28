@@ -1,5 +1,7 @@
 /*eslint no-var: 0*/
 
+var path = require('path');
+
 module.exports = function (config) {
 
   var customLaunchers = {
@@ -37,6 +39,17 @@ module.exports = function (config) {
 
     browsers: Object.keys(customLaunchers),
 
+    browserNoActivityTimeout: 300000,
+
+    captureTimeout: 300000,
+
+    coverageReporter: {
+      reporters: [
+        { type: 'html', subdir: 'html' },
+        { type: 'lcovonly', subdir: '.' }
+      ]
+    },
+
     customLaunchers: customLaunchers,
 
     files: ['test/Salvager.test.js'],
@@ -47,11 +60,11 @@ module.exports = function (config) {
       'test/Salvager.test.js': ['webpack', 'sourcemap']
     },
 
-    reporters: ['spec', 'saucelabs'],
+    reporters: ['spec', 'saucelabs', 'coverage', 'coveralls'],
 
     sauceLabs: {
-      recordScreenshots: false,
-      public: 'public'
+      public: 'public',
+      recordScreenshots: false
     },
 
     singleRun: true,
@@ -64,6 +77,12 @@ module.exports = function (config) {
             test: /\.js$/,
             loaders: ['babel'],
             exclude: /node_modules/
+          },
+          {
+            test: /\.js$/,
+            include: path.resolve('src'),
+            exclude: /test/,
+            loader: 'isparta'
           },
           {
             test: /\.json$/,
