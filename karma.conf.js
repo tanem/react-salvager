@@ -1,9 +1,18 @@
 /*eslint no-var: 0*/
 
+var path = require('path');
+
 module.exports = function (config) {
   config.set({
 
     browsers: ['Chrome'],
+
+    coverageReporter: {
+      reporters: [
+        { type: 'html', subdir: 'html' },
+        { type: 'lcovonly', subdir: '.' }
+      ]
+    },
 
     files: ['test/Salvager.test.js'],
 
@@ -13,7 +22,7 @@ module.exports = function (config) {
       'test/Salvager.test.js': ['webpack', 'sourcemap']
     },
 
-    reporters: ['spec'],
+    reporters: ['spec', 'coverage'],
 
     singleRun: true,
 
@@ -25,6 +34,12 @@ module.exports = function (config) {
             test: /\.js$/,
             loaders: ['babel'],
             exclude: /node_modules/
+          },
+          {
+            test: /\.js$/,
+            include: path.resolve('src'),
+            exclude: /test/,
+            loader: 'isparta'
           },
           {
             test: /\.json$/,
