@@ -98,7 +98,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      bufferStart: 0,
 	      isUpdating: false,
 	      rowHeight: 0,
-	      rowWrapperTransform: ''
+	      rowWrapperTransform: '',
+	      visibleAreaOffsetHeight: 0
 	    };
 	    return _this;
 	  }
@@ -151,6 +152,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	      });
 	    }
 	  }, {
+	    key: 'shouldComponentUpdate',
+	    value: function shouldComponentUpdate(nextProps, nextState) {
+	      return nextState.bufferStart !== this.state.bufferStart || nextState.rowHeight !== this.state.rowHeight;
+	    }
+	  }, {
 	    key: '_buildRows',
 	    value: function _buildRows() {
 	      var _this3 = this;
@@ -186,10 +192,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var midPoint = this.visibleArea.scrollTop + this.state.visibleAreaOffsetHeight / 2;
 	      var bufferMidPoint = Math.floor(midPoint / this.state.rowHeight);
 	      var bufferStart = (0, _clamp2.default)(Math.floor(bufferMidPoint - this.props.bufferSize / 2), 0, this.props.data.length - this.props.bufferSize);
-
-	      if (bufferStart === this.state.bufferStart) {
-	        return this.setState({ isUpdating: false });
-	      }
 
 	      this.setState({
 	        bufferStart: bufferStart,
