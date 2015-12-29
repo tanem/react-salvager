@@ -19,6 +19,7 @@ exec(`git commit -am "Release v${newSemver}"`);
 exec(`git tag v${newSemver}`);
 exec('git push');
 exec('git push --tags');
+exec('npm publish');
 
 function getNewSemver(currentVersion, newVersion) {
   let newSemver = semver.valid(newVersion);
