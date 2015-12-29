@@ -35,8 +35,8 @@
     "clean:build": "rimraf dist lib",
     "clean:cov": "rimraf coverage",
     "lint": "eslint .",
-    "prepublish": "in-publish && babel-node bin/prepublish || not-in-publish",
-    "start": "babel-node bin/start.js",
+    "release": "babel-node bin/release",
+    "start": "babel-node bin/start",
     "test": "npm run lint && npm run clean:cov && karma start karma.config.ci.js",
     "test:local": "npm run lint && npm run clean:cov && karma start karma.config.local.js"
   },
