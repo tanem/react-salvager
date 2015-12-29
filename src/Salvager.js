@@ -11,7 +11,8 @@ export default class Salvager extends Component {
       bufferStart: 0,
       isUpdating: false,
       rowHeight: 0,
-      rowWrapperTransform: ''
+      rowWrapperTransform: '',
+      visibleAreaOffsetHeight: 0
     };
   }
 
@@ -52,6 +53,13 @@ export default class Salvager extends Component {
     });
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      nextState.bufferStart !== this.state.bufferStart ||
+      nextState.rowHeight !== this.state.rowHeight
+    );
+  }
+
   _buildRows() {
     let RenderedRow = Row;
     if (this.props.getRow) RenderedRow = this.props.getRow();
@@ -80,10 +88,6 @@ export default class Salvager extends Component {
     const midPoint = this.visibleArea.scrollTop + this.state.visibleAreaOffsetHeight / 2;
     const bufferMidPoint = Math.floor(midPoint / this.state.rowHeight);
     let bufferStart = clamp(Math.floor(bufferMidPoint - this.props.bufferSize / 2), 0, this.props.data.length - this.props.bufferSize);
-
-    if (bufferStart === this.state.bufferStart) {
-      return this.setState({ isUpdating: false });
-    }
 
     this.setState({
       bufferStart,
