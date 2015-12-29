@@ -28,12 +28,17 @@
     "table"
   ],
   "scripts": {
-    "clean": "rimraf lib",
+    "build:lib": "babel src -d lib",
+    "build:umd": "webpack --config webpack.config.umd.js",
+    "build:umd:min": "webpack --config webpack.config.umd-min.js",
+    "build": "npm run clean:build && npm run build:lib && npm run build:umd && npm run build:umd:min",
+    "clean:build": "rimraf dist lib",
+    "clean:cov": "rimraf coverage",
     "lint": "eslint .",
-    "test:local": "karma start karma.conf.js",
-    "test": "karma start karma.conf-ci.js",
-    "start": "node server.js",
-    "prepublish": "in-publish && npm run lint && npm run clean && babel src -d lib || not-in-publish"
+    "prepublish": "in-publish && babel-node bin/prepublish || not-in-publish",
+    "start": "babel-node bin/start.js",
+    "test": "npm run lint && npm run clean:cov && karma start karma.config.ci.js",
+    "test:local": "npm run lint && npm run clean:cov && karma start karma.config.local.js"
   },
   "devDependencies": {
     "babel-cli": "^6.3.17",
@@ -73,6 +78,8 @@
     "react-hot-loader": "^1.3.0",
     "rimraf": "^2.5.0",
     "sass-loader": "^3.1.2",
+    "semver": "^5.1.0",
+    "shelljs": "^0.5.3",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.9",
     "webpack-dev-middleware": "^1.4.0",
