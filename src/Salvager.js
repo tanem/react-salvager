@@ -61,8 +61,7 @@ export default class Salvager extends Component {
   }
 
   _buildRows() {
-    let RenderedRow = Row;
-    if (this.props.getRow) RenderedRow = this.props.getRow();
+    const RenderedRow = this.props.row || Row;
     const rows = [];
     for (let i = 0, j = this.props.bufferSize; i < j; i++) {
       rows.push(
