@@ -13,7 +13,7 @@ A [React](http://facebook.github.io/react/) port of [salvager](https://github.co
 
 > Reuse row elements when displaying large datasets. This is beneficial to performance since the number of row elements rendered to the DOM is fixed, no matter how big the dataset is.
 
-Originally conceived after stumbling into performance issues with large datasets when creating a custom select box for a large SPA I was working on. The algorithm used in this port is simpler than the one used in the original salvager module. This came about after thinking more carefully about [the minimal set of mutable state](https://facebook.github.io/react/docs/thinking-in-react.html#step-3-identify-the-minimal-but-complete-representation-of-ui-state) this port needed. It's worth noting that I'm not actually using this module in a production situation yet :smirk:
+The algorithm used in this port is simpler than the one used in the original salvager module. This came about after thinking more carefully about [the minimal set of mutable state](https://facebook.github.io/react/docs/thinking-in-react.html#step-3-identify-the-minimal-but-complete-representation-of-ui-state) this port needed. It's worth noting that I'm not actually using this module in a production situation yet :smirk:
 
 ## Installation
 
