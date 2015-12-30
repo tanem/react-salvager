@@ -9,21 +9,19 @@ import Salvager from '../src/Salvager';
 
 import './styles.scss';
 
-function getRow() {
-  return class Row extends Component {
-    render() {
-      return (
-        <li
-          className={this.props.className}>
-          {this.props.children}
-        </li>
-      );
-    }
+class Row extends Component {
+  render() {
+    return (
+      <li
+        className={this.props.className}>
+        {this.props.children}
+      </li>
+    );
+  }
 
-    getHeight() {
-      return 20;
-    }
-  };
+  getHeight() {
+    return 20;
+  }
 }
 
 describe('Salvager', () => {
@@ -47,7 +45,7 @@ describe('Salvager', () => {
         rowClassName={'Salvager-row'}
         bufferSize={4}
         data={['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6']}
-        getRow={getRow}
+        row={Row}
       />,
       root,
       () => {
