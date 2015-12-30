@@ -1,6 +1,6 @@
 {
   "name": "react-salvager",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Reuse row elements when displaying large datasets.",
   "main": "lib/Salvager.js",
   "homepage": "https://github.com/tanem/react-salvager",

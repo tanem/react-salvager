@@ -161,8 +161,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function _buildRows() {
 	      var _this3 = this;
 
-	      var RenderedRow = _Row2.default;
-	      if (this.props.getRow) RenderedRow = this.props.getRow();
+	      var RenderedRow = this.props.row || _Row2.default;
 	      var rows = [];
 	      for (var i = 0, j = this.props.bufferSize; i < j; i++) {
 	        rows.push(_react2.default.createElement(
