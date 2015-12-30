@@ -15,7 +15,7 @@ A [React](http://facebook.github.io/react/) port of [salvager](https://github.co
 
 The algorithm used in this port is simpler than the one used in the original salvager module. This came about after thinking more carefully about [the minimal set of mutable state](https://facebook.github.io/react/docs/thinking-in-react.html#step-3-identify-the-minimal-but-complete-representation-of-ui-state) this port needed.
 
-It's worth noting that I'm not personally using this module in a production situation yet :smirk:
+It's also worth noting that I'm not personally using this port in a production situation yet :smirk:
 
 ## Installation
 
