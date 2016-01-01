@@ -161,11 +161,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function _buildRows() {
 	      var _this3 = this;
 
-	      var RenderedRow = this.props.row || _Row2.default;
 	      var rows = [];
 	      for (var i = 0, j = this.props.bufferSize; i < j; i++) {
 	        rows.push(_react2.default.createElement(
-	          RenderedRow,
+	          this.props.row,
 	          {
 	            className: this.props.rowClassName,
 	            key: i,
@@ -204,6 +203,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	})(_react.Component);
 
 	exports.default = Salvager;
+
+	Salvager.propTypes = {
+	  bufferSize: _react2.default.PropTypes.number,
+	  data: _react2.default.PropTypes.array,
+	  row: _react2.default.PropTypes.func,
+	  rowClassName: _react2.default.PropTypes.string,
+	  rowWrapperClassName: _react2.default.PropTypes.string,
+	  spacerClassName: _react2.default.PropTypes.string,
+	  visibleAreaClassName: _react2.default.PropTypes.string
+	};
+
+	Salvager.defaultProps = {
+	  bufferSize: 50,
+	  data: [],
+	  row: _Row2.default
+	};
 
 /***/ },
 /* 1 */
@@ -270,6 +285,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	})(_react.Component);
 
 	exports.default = Row;
+
+	Row.propTypes = {
+	  className: _react2.default.PropTypes.string
+	};
 
 /***/ },
 /* 3 */
