@@ -5,7 +5,8 @@
 [![npm version](https://img.shields.io/npm/v/react-salvager.svg?style=flat-square)](https://www.npmjs.com/package/react-salvager)
 [![npm downloads](https://img.shields.io/npm/dm/react-salvager.svg?style=flat-square)](https://www.npmjs.com/package/react-salvager)
 [![dependency status](https://david-dm.org/tanem/react-salvager.svg?style=flat-square)](https://david-dm.org/tanem/react-salvager)
-[![dev dependency status](https://david-dm.org/tanem/react-salvager/dev-status.svg?style=flat-square)](https://david-dm.org/tanem/react-salvager#info=devDependencies)
+[![devDependency status](https://david-dm.org/tanem/react-salvager/dev-status.svg?style=flat-square)](https://david-dm.org/tanem/react-salvager#info=devDependencies)
+[![peerDependency status](https://david-dm.org/tanem/react-salvager/peer-status.svg?style=flat-square)](https://david-dm.org/tanem/react-salvager#info=peerDependencies)
 
 [![sauce test status](https://saucelabs.com/browser-matrix/react-salvager.svg)](https://saucelabs.com/u/react-salvager)
 
