@@ -61,16 +61,15 @@ export default class Salvager extends Component {
   }
 
   _buildRows() {
-    const RenderedRow = this.props.row || Row;
     const rows = [];
     for (let i = 0, j = this.props.bufferSize; i < j; i++) {
       rows.push(
-        <RenderedRow
+        <this.props.row
           className={this.props.rowClassName}
           key={i}
           ref={(ref) => { if (!this.row) this.row = ref; }}>
           {this.props.data[this.state.bufferStart + i]}
-        </RenderedRow>
+        </this.props.row>
       );
     }
     return rows;
@@ -96,3 +95,19 @@ export default class Salvager extends Component {
   }
 
 }
+
+Salvager.propTypes = {
+  bufferSize: React.PropTypes.number,
+  data: React.PropTypes.array,
+  row: React.PropTypes.func,
+  rowClassName: React.PropTypes.string,
+  rowWrapperClassName: React.PropTypes.string,
+  spacerClassName: React.PropTypes.string,
+  visibleAreaClassName: React.PropTypes.string
+};
+
+Salvager.defaultProps = {
+  bufferSize: 50,
+  data: [],
+  row: Row
+};

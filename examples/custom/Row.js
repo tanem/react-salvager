@@ -26,3 +26,7 @@ export default class Row extends Component {
   }
 
 }
+
+Row.propTypes = {
+  className: React.PropTypes.string
+};
