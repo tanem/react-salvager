@@ -40,7 +40,7 @@ Two usage examples are contained in the `examples/` dir. In order to view them, 
 To run the tests locally using Chrome:
 
 ```
-$ npm run test:local
+$ npm test -- local
 ```
 
 Travis will also run the tests via [Sauce Labs](https://saucelabs.com/) when changes are pushed. To view the code coverage report, open `coverage/html/index.html` in a browser.

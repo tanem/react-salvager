@@ -28,17 +28,12 @@
     "table"
   ],
   "scripts": {
-    "build:lib": "babel src -d lib",
-    "build:umd": "webpack --config webpack.config.umd.js",
-    "build:umd:min": "webpack --config webpack.config.umd-min.js",
-    "build": "npm run clean:build && npm run build:lib && npm run build:umd && npm run build:umd:min",
-    "clean:build": "rimraf dist lib",
-    "clean:cov": "rimraf coverage",
-    "lint": "eslint .",
+    "build": "babel-node bin/build",
+    "clean": "babel-node bin/clean",
+    "lint": "babel-node bin/lint",
     "release": "babel-node bin/release",
     "start": "babel-node bin/start",
-    "test": "npm run lint && npm run clean:cov && karma start karma.config.ci.js",
-    "test:local": "npm run lint && npm run clean:cov && karma start karma.config.local.js"
+    "test": "babel-node bin/test"
   },
   "devDependencies": {
     "babel-cli": "^6.3.17",
@@ -80,6 +75,7 @@
     "sass-loader": "^3.1.2",
     "semver": "^5.1.0",
     "shelljs": "^0.5.3",
+    "shelljs-nodecli": "^0.1.1",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.9",
     "webpack-dev-middleware": "^1.4.0",
