@@ -9,7 +9,7 @@ import packageJSON from '../package.json';
 const [ , , newVersion] = process.argv;
 const newSemver = getNewSemver(packageJSON.version, newVersion);
 
-exec('npm run test:local');
+exec('npm run test -- local');
 exec('npm run build');
 
 writePackageJSONVersion(newSemver);
