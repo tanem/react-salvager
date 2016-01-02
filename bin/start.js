@@ -1,6 +1,6 @@
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
-import makeWebpackConfig from '../makeWebpackConfig';
+import makeWebpackConfig from './make-webpack-config';
 
 const webpackConfig = makeWebpackConfig('dev');
 const devServerConfig = webpackConfig.devServer;
