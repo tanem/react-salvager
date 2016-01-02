@@ -1,11 +1,12 @@
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
-import config from '../webpack.config.dev';
+import makeWebpackConfig from '../makeWebpackConfig';
 
-const devServerConfig = config.devServer;
+const webpackConfig = makeWebpackConfig('dev');
+const devServerConfig = webpackConfig.devServer;
 const { port, hostname } = devServerConfig;
 
-new WebpackDevServer(webpack(config), devServerConfig)
+new WebpackDevServer(webpack(webpackConfig), devServerConfig)
   .listen(port, hostname, (err) => {
     if (err) console.log(err);
     console.log(`Listening at localhost:${port}`);
