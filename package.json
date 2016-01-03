@@ -49,6 +49,7 @@
     "eslint": "^1.10.3",
     "eslint-plugin-react": "^3.11.3",
     "express": "^4.13.3",
+    "extract-text-webpack-plugin": "^0.9.1",
     "in-publish": "^2.0.0",
     "isparta-loader": "^2.0.0",
     "istanbul": "^0.4.1",
@@ -87,6 +88,7 @@
   },
   "dependencies": {
     "clamp": "^1.0.1",
+    "classnames": "^2.2.1",
     "lodash.isfunction": "^3.0.6"
   }
 }

@@ -24,7 +24,7 @@ It's also worth noting that I'm not personally using this port in a production s
 $ npm install react-salvager --save
 ```
 
-You can also use the [UMD](https://github.com/umdjs/umd) build by including `dist/Salvager.js` in your page. If you use this, make sure you have already included React as a dependency.
+You can also use the [UMD](https://github.com/umdjs/umd) build by including `dist/salvager.css` and `dist/salvager.js` in your page. If you use these, make sure you have already included React as a dependency.
 
 ## Usage
 

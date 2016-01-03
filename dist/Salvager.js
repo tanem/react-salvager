@@ -70,13 +70,19 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _clamp2 = _interopRequireDefault(_clamp);
 
-	var _lodash = __webpack_require__(4);
+	var _lodash = __webpack_require__(6);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
+
+	var _classnames = __webpack_require__(4);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
 
 	var _Row = __webpack_require__(2);
 
 	var _Row2 = _interopRequireDefault(_Row);
+
+	__webpack_require__(5);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -112,30 +118,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return _react2.default.createElement(
 	        'div',
 	        {
-	          className: this.props.visibleAreaClassName,
+	          className: (0, _classnames2.default)('Salvager', this.props.visibleAreaClassName),
 	          onScroll: this._scrollHandler.bind(this),
 	          ref: function ref(_ref2) {
 	            return _this2.visibleArea = _ref2;
-	          },
-	          style: { overflow: 'auto' } },
+	          } },
 	        _react2.default.createElement(
 	          'ol',
 	          {
-	            className: this.props.rowWrapperClassName,
+	            className: (0, _classnames2.default)('Salvager-rowWrapper', this.props.rowWrapperClassName),
 	            ref: function ref(_ref) {
 	              return _this2.rowWrapper = _ref;
 	            },
 	            style: {
-	              listStyleType: 'none',
-	              marginBottom: 0,
-	              marginTop: 0,
-	              paddingLeft: 0,
 	              transform: this.state.rowWrapperTransform
 	            } },
 	          this._buildRows()
 	        ),
 	        _react2.default.createElement('div', {
-	          className: this.props.spacerClassName,
+	          className: (0, _classnames2.default)('Salvager-spacer', this.props.spacerClassName),
 	          style: { height: this._getSpacerHeight() }
 	        })
 	      );
@@ -166,7 +167,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        rows.push(_react2.default.createElement(
 	          this.props.row,
 	          {
-	            className: this.props.rowClassName,
+	            className: (0, _classnames2.default)('Salvager-row', this.props.rowClassName),
 	            key: i,
 	            ref: function ref(_ref3) {
 	              if (!_this3.row) _this3.row = _ref3;
@@ -305,6 +306,66 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	  Copyright (c) 2015 Jed Watson.
+	  Licensed under the MIT License (MIT), see
+	  http://jedwatson.github.io/classnames
+	*/
+	/* global define */
+
+	(function () {
+		'use strict';
+
+		var hasOwn = {}.hasOwnProperty;
+
+		function classNames () {
+			var classes = '';
+
+			for (var i = 0; i < arguments.length; i++) {
+				var arg = arguments[i];
+				if (!arg) continue;
+
+				var argType = typeof arg;
+
+				if (argType === 'string' || argType === 'number') {
+					classes += ' ' + arg;
+				} else if (Array.isArray(arg)) {
+					classes += ' ' + classNames.apply(null, arg);
+				} else if (argType === 'object') {
+					for (var key in arg) {
+						if (hasOwn.call(arg, key) && arg[key]) {
+							classes += ' ' + key;
+						}
+					}
+				}
+			}
+
+			return classes.substr(1);
+		}
+
+		if (typeof module !== 'undefined' && module.exports) {
+			module.exports = classNames;
+		} else if (true) {
+			// register as 'classnames', consistent with npm package name
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+				return classNames;
+			}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		} else {
+			window.classNames = classNames;
+		}
+	}());
+
+
+/***/ },
+/* 5 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 6 */
 /***/ function(module, exports) {
 
 	/**

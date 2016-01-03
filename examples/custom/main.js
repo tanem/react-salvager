@@ -7,10 +7,11 @@ import './main.scss';
 
 ReactDOM.render(
   <Salvager
-    visibleAreaClassName={'Salvager-visibleArea'}
     bufferSize={50}
     data={getData(500000)}
     row={Row}
+    rowClassName={'Salvager-row--customExample'}
+    visibleAreaClassName={'Salvager--customExample'}
     />,
   document.querySelector('.Root')
 );

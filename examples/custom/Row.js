@@ -8,8 +8,7 @@ export default class Row extends Component {
         className={this.props.className}
         ref={(ref) => this.row = ref}
         style={{
-          backgroundColor: this._getBackgroundColour(),
-          padding: 10
+          backgroundColor: this._getBackgroundColour()
         }}>
         {this.props.children}
       </li>

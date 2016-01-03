@@ -1,5 +1,6 @@
 import path from 'path';
 import webpack from 'webpack';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 module.exports = function makeWebpackConfig(configType) {
   return Object.assign(
@@ -112,6 +113,10 @@ function getModule(configType) {
           test: /\.js$/,
           loader: 'babel',
           exclude: /node_modules/
+        },
+        {
+          test: /\.scss$/,
+          loader: ExtractTextPlugin.extract('style-loader', 'css!sass')
         }
       ]
     }
@@ -135,7 +140,7 @@ function getOutput(configType) {
         library: 'Salvager',
         libraryTarget: 'umd',
         path: 'dist',
-        filename: 'Salvager.js'
+        filename: 'salvager.js'
       }
     };
   }
@@ -145,7 +150,7 @@ function getOutput(configType) {
       library: 'Salvager',
       libraryTarget: 'umd',
       path: 'dist',
-      filename: 'Salvager.min.js'
+      filename: 'salvager.min.js'
     }
   };
 }
@@ -165,7 +170,8 @@ function getPlugins(configType) {
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.DefinePlugin({
           'process.env.NODE_ENV': JSON.stringify('development')
-        })
+        }),
+        new ExtractTextPlugin('salvager.css')
       ]
     };
   }
@@ -181,7 +187,8 @@ function getPlugins(configType) {
           screw_ie8: true,
           warnings: false
         }
-      })
+      }),
+      new ExtractTextPlugin('salvager.min.css')
     ]
   };
 }

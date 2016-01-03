@@ -6,8 +6,8 @@ import './main.scss';
 
 ReactDOM.render(
   <Salvager
-    visibleAreaClassName={'Salvager-visibleArea'}
-    rowClassName={'Salvager-row'}
+    visibleAreaClassName={'Salvager--defaultExample'}
+    rowClassName={'Salvager-row--defaultExample'}
     bufferSize={50}
     data={getData(500000)}
     />,
