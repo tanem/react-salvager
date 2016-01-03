@@ -7,7 +7,7 @@ import { expect } from 'chai';
 import $ from 'jquery';
 import Salvager from '../src/Salvager';
 
-import './styles.scss';
+import './salvager.test.scss';
 
 class Row extends Component {
   render() {
@@ -39,17 +39,14 @@ describe('Salvager', () => {
     document.body.appendChild(root);
     render(
       <Salvager
-        visibleAreaClassName={'Salvager-visibleArea'}
-        rowWrapperClassName={'Salvager-rowWrapper'}
-        spacerClassName={'Salvager-spacer'}
-        rowClassName={'Salvager-row'}
+        visibleAreaClassName={'Salvager--test'}
         bufferSize={4}
         data={['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6']}
         row={Row}
       />,
       root,
       () => {
-        visibleArea = $(root).find('.Salvager-visibleArea').get(0);
+        visibleArea = $(root).find('.Salvager').get(0);
         rowWrapper = $(root).find('.Salvager-rowWrapper').get(0);
         spacer = $(root).find('.Salvager-spacer').get(0);
         scroll = (amount) => {

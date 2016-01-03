@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import clamp from 'clamp';
 import isFunction from 'lodash.isfunction';
+import classNames from 'classnames';
 import Row from './Row';
+
+import './salvager.scss';
 
 export default class Salvager extends Component {
 
@@ -19,24 +22,19 @@ export default class Salvager extends Component {
   render() {
     return (
       <div
-        className={this.props.visibleAreaClassName}
+        className={classNames('Salvager', this.props.visibleAreaClassName)}
         onScroll={this._scrollHandler.bind(this)}
-        ref={(ref) => this.visibleArea = ref}
-        style={{ overflow: 'auto' }}>
+        ref={(ref) => this.visibleArea = ref}>
         <ol
-          className={this.props.rowWrapperClassName}
+          className={classNames('Salvager-rowWrapper', this.props.rowWrapperClassName)}
           ref={(ref) => this.rowWrapper = ref}
           style={{
-            listStyleType: 'none',
-            marginBottom: 0,
-            marginTop: 0,
-            paddingLeft: 0,
             transform: this.state.rowWrapperTransform
           }}>
           {this._buildRows()}
         </ol>
         <div
-          className={this.props.spacerClassName}
+          className={classNames('Salvager-spacer', this.props.spacerClassName)}
           style={{ height: this._getSpacerHeight() }}
         />
       </div>
@@ -65,7 +63,7 @@ export default class Salvager extends Component {
     for (let i = 0, j = this.props.bufferSize; i < j; i++) {
       rows.push(
         <this.props.row
-          className={this.props.rowClassName}
+          className={classNames('Salvager-row', this.props.rowClassName)}
           key={i}
           ref={(ref) => { if (!this.row) this.row = ref; }}>
           {this.props.data[this.state.bufferStart + i]}
