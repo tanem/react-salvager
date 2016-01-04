@@ -31,7 +31,39 @@ You can also use the [UMD](https://github.com/umdjs/umd) build by including `dis
 Two usage examples are contained in the `examples/` dir. In order to view them, you'll first need to kick off the server via `npm start`. Note that the server itself is actually a [webpack-dev-server](https://webpack.github.io/docs/webpack-dev-server.html) with [react hot loading](https://github.com/gaearon/react-hot-loader) enabled, so you can use this setup for development too.
 
 - The default example uses the built-in `Row` component, and can be viewed at `http://localhost:3000/examples/default/`
-- The custom example uses a custom `Row` component, and can be viewed at `http://localhost:3000/examples/custom/`
+- The custom example uses a custom `Row` component, and can be viewed at `http://localhost:3000/examples/custom/`.
+
+By default this module ships with [a tiny amount of structural styling](src/salvager.scss). This can be extended according to your presentation requirements via the various `...ClassName` props. Both of the examples above utilise this method, so can be used as a reference. (If you're curious about the CSS naming convention being used, it's based on [SUIT CSS](https://github.com/suitcss/suit/blob/master/doc/naming-conventions.md) :bowtie:)
+
+## API
+
+__Props__
+
+- `bufferSize` - *Optional* Number of rendered rows. Defaults to `50`.
+- `data` - *Optional* Data to render. Defaults to `[]`.
+- `row` - *Optional* Component used to render each row. Defaults to [`Row`](src/Row.js).
+- `rowClassName` - *Optional* Extra class added to each row.
+- `rowWrapperClassName` - *Optional* Extra class added to the row wrapper.
+- `spacerClassName` - *Optional* Extra class added to the spacer.
+- `visibleAreaClassName` - *Optional* Extra class added to the visible area (root node).
+
+__Example__
+
+```js
+// Assuming:
+// - Data is a large array of items
+// - Row is a custom component
+
+<Salvager
+  bufferSize={25}
+  data={data}
+  row={Row}
+  rowClassName={'Salvager-row--apiExample'}
+  rowWrapperClassName={'Salvager-rowWrapper--apiExample'}
+  spacerClassName={'Salvager-spacer--apiExample'}
+  visibleAreaClassName={'Salvager--apiExample'}
+/>
+```
 
 ## Testing
 
