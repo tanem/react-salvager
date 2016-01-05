@@ -47,15 +47,15 @@ function getEntry(configType) {
   if (configType === 'dev') {
     return {
       entry: {
-        custom: [
+        'custom-row': [
           'webpack-dev-server/client?http://localhost:3000',
           'webpack/hot/only-dev-server',
-          './examples/custom/main.js'
+          './examples/custom-row/main.js'
         ],
-        default: [
+        'default-row': [
           'webpack-dev-server/client?http://localhost:3000',
           'webpack/hot/only-dev-server',
-          './examples/default/main.js'
+          './examples/default-row/main.js'
         ]
       }
     };

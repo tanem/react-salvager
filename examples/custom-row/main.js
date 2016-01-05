@@ -10,9 +10,9 @@ ReactDOM.render(
     bufferSize={25}
     data={getData(500000)}
     row={Row}
-    rowClassName={'Salvager-row--customExample'}
-    rowWrapperClassName={'Salvager-rowWrapper--customExample'}
-    visibleAreaClassName={'Salvager--customExample'}
+    rowClassName={'Salvager-row--customRowExample'}
+    rowWrapperClassName={'Salvager-rowWrapper--customRowExample'}
+    visibleAreaClassName={'Salvager--customRowExample'}
     />,
   document.querySelector('.Root')
 );
