@@ -58,10 +58,10 @@ __Example__
   bufferSize={25}
   data={data}
   row={Row}
-  rowClassName={'Salvager-row--apiExample'}
-  rowWrapperClassName={'Salvager-rowWrapper--apiExample'}
-  spacerClassName={'Salvager-spacer--apiExample'}
-  visibleAreaClassName={'Salvager--apiExample'}
+  rowClassName={'Example-salvagerRow'}
+  rowWrapperClassName={'Example-salvagerRowWrapper'}
+  spacerClassName={'Example-salvagerSpacer'}
+  visibleAreaClassName={'Example-salvager'}
 />
 ```
 
