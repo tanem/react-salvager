@@ -159,7 +159,10 @@ function getPlugins(configType) {
   if (configType === 'dev') {
     return {
       plugins: [
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.DefinePlugin({
+          'process.env.NODE_ENV': JSON.stringify('development')
+        })
       ]
     };
   }
@@ -169,7 +172,7 @@ function getPlugins(configType) {
       plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.DefinePlugin({
-          'process.env.NODE_ENV': JSON.stringify('development')
+          'process.env.NODE_ENV': JSON.stringify('production')
         }),
         new ExtractTextPlugin('salvager.css')
       ]
