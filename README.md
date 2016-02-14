@@ -41,7 +41,7 @@ __Props__
 
 - `bufferSize` - *Optional* Number of rendered rows. Defaults to `50`.
 - `data` - *Optional* Data to render. Defaults to `[]`.
-- `row` - *Optional* Component used to render each row. Defaults to [`Row`](src/Row.js).
+- `rowComponent` - *Optional* Component used to render each row. Defaults to [`Row`](src/Row.js).
 - `rowClassName` - *Optional* Extra class added to each row.
 - `rowWrapperClassName` - *Optional* Extra class added to the row wrapper.
 - `spacerClassName` - *Optional* Extra class added to the spacer.
@@ -57,7 +57,7 @@ __Example__
 <Salvager
   bufferSize={25}
   data={data}
-  row={Row}
+  rowComponent={Row}
   rowClassName={'Example-salvagerRow'}
   rowWrapperClassName={'Example-salvagerRowWrapper'}
   spacerClassName={'Example-salvagerSpacer'}
