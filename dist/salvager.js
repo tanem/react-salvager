@@ -165,7 +165,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var rows = [];
 	      for (var i = 0, j = this.props.bufferSize; i < j; i++) {
 	        rows.push(_react2.default.createElement(
-	          this.props.row,
+	          this.props.rowComponent,
 	          {
 	            className: (0, _classnames2.default)('Salvager-row', this.props.rowClassName),
 	            key: i,
@@ -208,7 +208,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	Salvager.propTypes = {
 	  bufferSize: _react2.default.PropTypes.number,
 	  data: _react2.default.PropTypes.array,
-	  row: _react2.default.PropTypes.func,
+	  rowComponent: _react2.default.PropTypes.func,
 	  rowClassName: _react2.default.PropTypes.string,
 	  rowWrapperClassName: _react2.default.PropTypes.string,
 	  spacerClassName: _react2.default.PropTypes.string,
@@ -218,7 +218,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	Salvager.defaultProps = {
 	  bufferSize: 50,
 	  data: [],
-	  row: _Row2.default
+	  rowComponent: _Row2.default
 	};
 
 /***/ },
