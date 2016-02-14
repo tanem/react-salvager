@@ -9,7 +9,7 @@ ReactDOM.render(
   <Salvager
     bufferSize={25}
     data={getData(500000)}
-    row={Row}
+    rowComponent={Row}
     rowClassName={'CustomRowExample-salvagerRow'}
     rowWrapperClassName={'CustomRowExample-salvagerRowWrapper'}
     visibleAreaClassName={'CustomRowExample-salvager'}
