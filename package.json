@@ -74,7 +74,7 @@
     "rimraf": "^2.5.0",
     "sass-loader": "^3.1.2",
     "semver": "^5.1.0",
-    "shelljs": "^0.5.3",
+    "shelljs": "^0.7.1",
     "shelljs-nodecli": "^0.1.1",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.9",
