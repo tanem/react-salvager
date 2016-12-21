@@ -1,0 +1,11 @@
+bin
+coverage
+src
+test
+.babelrc
+.editorconfig
+.eslintignore
+.eslintrc
+.gitignore
+.npmignore
+.travis.yml

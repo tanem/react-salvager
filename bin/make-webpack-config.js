@@ -74,12 +74,6 @@ function getExternals(configType) {
           commonjs: 'react',
           commonjs2: 'react',
           amd: 'react'
-        },
-        'react-dom': {
-          root: 'ReactDOM',
-          commonjs: 'react-dom',
-          commonjs2: 'react-dom',
-          amd: 'react-dom'
         }
       }
     }
@@ -128,20 +122,20 @@ function getOutput(configType) {
   if (configType === 'umd') {
     return {
       output: {
-        library: 'Salvager',
+        library: 'react-salvager',
         libraryTarget: 'umd',
         path: 'dist',
-        filename: 'salvager.js'
+        filename: 'react-salvager.js'
       }
     }
   }
 
   return {
     output: {
-      library: 'Salvager',
+      library: 'react-salvager',
       libraryTarget: 'umd',
       path: 'dist',
-      filename: 'salvager.min.js'
+      filename: 'react-salvager.min.js'
     }
   }
 }
