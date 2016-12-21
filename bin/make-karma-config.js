@@ -118,12 +118,12 @@ function getPreprocessors() {
 function getReporters(configType) {
   if (configType === 'local') {
     return {
-      reporters: [ 'spec', 'coverage' ]
+      reporters: [ 'mocha', 'coverage' ]
     }
   }
 
   return {
-    reporters: [ 'spec', 'saucelabs', 'coverage', 'coveralls' ]
+    reporters: [ 'mocha', 'saucelabs', 'coverage', 'coveralls' ]
   }
 }
 
