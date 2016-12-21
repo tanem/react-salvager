@@ -60,6 +60,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(1);
@@ -70,19 +72,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _clamp2 = _interopRequireDefault(_clamp);
 
-	var _lodash = __webpack_require__(6);
+	var _lodash = __webpack_require__(4);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
-
-	var _classnames = __webpack_require__(4);
-
-	var _classnames2 = _interopRequireDefault(_classnames);
 
 	var _Row = __webpack_require__(2);
 
 	var _Row2 = _interopRequireDefault(_Row);
-
-	__webpack_require__(5);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -96,7 +92,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  _inherits(Salvager, _Component);
 
 	  function Salvager() {
-	    var _Object$getPrototypeO;
+	    var _ref;
 
 	    var _temp, _this, _ret;
 
@@ -106,7 +102,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      args[_key] = arguments[_key];
 	    }
 
-	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Salvager)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Salvager.__proto__ || Object.getPrototypeOf(Salvager)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
 	      bufferStart: 0,
 	      isUpdating: false,
 	      rowHeight: 0,
@@ -120,29 +116,39 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function render() {
 	      var _this2 = this;
 
+	      var _props = this.props,
+	          rowWrapperStyle = _props.rowWrapperStyle,
+	          spacerStyle = _props.spacerStyle,
+	          visibleAreaStyle = _props.visibleAreaStyle;
+
+
 	      return _react2.default.createElement(
 	        'div',
 	        {
-	          className: (0, _classnames2.default)('Salvager', this.props.visibleAreaClassName),
 	          onScroll: this._scrollHandler.bind(this),
-	          ref: function ref(_ref2) {
-	            return _this2.visibleArea = _ref2;
-	          } },
+	          ref: function ref(_ref3) {
+	            return _this2.visibleArea = _ref3;
+	          },
+	          style: _extends({
+	            overflow: 'auto'
+	          }, visibleAreaStyle)
+	        },
 	        _react2.default.createElement(
 	          'ol',
 	          {
-	            className: (0, _classnames2.default)('Salvager-rowWrapper', this.props.rowWrapperClassName),
-	            ref: function ref(_ref) {
-	              return _this2.rowWrapper = _ref;
+	            ref: function ref(_ref2) {
+	              return _this2.rowWrapper = _ref2;
 	            },
-	            style: {
+	            style: _extends({}, rowWrapperStyle, {
 	              transform: this.state.rowWrapperTransform
-	            } },
+	            })
+	          },
 	          this._buildRows()
 	        ),
 	        _react2.default.createElement('div', {
-	          className: (0, _classnames2.default)('Salvager-spacer', this.props.spacerClassName),
-	          style: { height: this._getSpacerHeight() }
+	          style: _extends({}, spacerStyle, {
+	            height: this._getSpacerHeight()
+	          })
 	        })
 	      );
 	    }
@@ -167,19 +173,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function _buildRows() {
 	      var _this3 = this;
 
+	      var _props2 = this.props,
+	          bufferSize = _props2.bufferSize,
+	          data = _props2.data,
+	          Row = _props2.Row,
+	          rowStyle = _props2.rowStyle;
+
 	      var rows = [];
-	      for (var i = 0, j = this.props.bufferSize; i < j; i++) {
-	        rows.push(_react2.default.createElement(
-	          this.props.rowComponent,
-	          {
-	            className: (0, _classnames2.default)('Salvager-row', this.props.rowClassName),
-	            key: i,
-	            ref: function ref(_ref3) {
-	              if (!_this3.row) _this3.row = _ref3;
-	            } },
-	          this.props.data[this.state.bufferStart + i]
-	        ));
+
+	      for (var i = 0, j = bufferSize; i < j; i++) {
+	        rows.push(_react2.default.createElement(Row, {
+	          key: i,
+	          ref: function ref(_ref4) {
+	            if (!_this3.row) {
+	              _this3.row = _ref4;
+	            }
+	          },
+	          style: rowStyle
+	        }, data[this.state.bufferStart + i]));
 	      }
+
 	      return rows;
 	    }
 	  }, {
@@ -209,18 +222,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	}(_react.Component);
 
 	Salvager.propTypes = {
-	  bufferSize: _react2.default.PropTypes.number,
-	  data: _react2.default.PropTypes.array,
-	  rowComponent: _react2.default.PropTypes.func,
-	  rowClassName: _react2.default.PropTypes.string,
-	  rowWrapperClassName: _react2.default.PropTypes.string,
-	  spacerClassName: _react2.default.PropTypes.string,
-	  visibleAreaClassName: _react2.default.PropTypes.string
+	  bufferSize: _react.PropTypes.number,
+	  data: _react.PropTypes.array,
+	  Row: _react.PropTypes.func,
+	  rowStyle: _react.PropTypes.object,
+	  rowWrapperStyle: _react.PropTypes.object,
+	  spacerStyle: _react.PropTypes.object,
+	  visibleAreaStyle: _react.PropTypes.object
 	};
 	Salvager.defaultProps = {
 	  bufferSize: 50,
 	  data: [],
-	  rowComponent: _Row2.default
+	  Row: _Row2.default,
+	  rowStyle: null,
+	  rowWrapperStyle: null,
+	  spacerStyle: null,
+	  visibleAreaStyle: null
 	};
 	exports.default = Salvager;
 
@@ -260,7 +277,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function Row() {
 	    _classCallCheck(this, Row);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Row).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (Row.__proto__ || Object.getPrototypeOf(Row)).apply(this, arguments));
 	  }
 
 	  _createClass(Row, [{
@@ -268,20 +285,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function render() {
 	      var _this2 = this;
 
+	      var _props = this.props,
+	          children = _props.children,
+	          style = _props.style;
+
+
 	      return _react2.default.createElement(
 	        'li',
 	        {
-	          className: this.props.className,
-	          ref: function ref(_ref) {
-	            return _this2.row = _ref;
-	          } },
-	        this.props.children
+	          ref: function ref(row) {
+	            return _this2._row = row;
+	          },
+	          style: style
+	        },
+	        children
 	      );
 	    }
 	  }, {
 	    key: 'getHeight',
 	    value: function getHeight() {
-	      return this.row.offsetHeight;
+	      return this._row.offsetHeight;
 	    }
 	  }]);
 
@@ -289,7 +312,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	}(_react.Component);
 
 	Row.propTypes = {
-	  className: _react.PropTypes.string
+	  children: _react.PropTypes.any,
+	  style: _react.PropTypes.object
+	};
+	Row.defaultProps = {
+	  children: null,
+	  style: null
 	};
 	exports.default = Row;
 
@@ -308,66 +336,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 4 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
-	  Copyright (c) 2016 Jed Watson.
-	  Licensed under the MIT License (MIT), see
-	  http://jedwatson.github.io/classnames
-	*/
-	/* global define */
-
-	(function () {
-		'use strict';
-
-		var hasOwn = {}.hasOwnProperty;
-
-		function classNames () {
-			var classes = [];
-
-			for (var i = 0; i < arguments.length; i++) {
-				var arg = arguments[i];
-				if (!arg) continue;
-
-				var argType = typeof arg;
-
-				if (argType === 'string' || argType === 'number') {
-					classes.push(arg);
-				} else if (Array.isArray(arg)) {
-					classes.push(classNames.apply(null, arg));
-				} else if (argType === 'object') {
-					for (var key in arg) {
-						if (hasOwn.call(arg, key) && arg[key]) {
-							classes.push(key);
-						}
-					}
-				}
-			}
-
-			return classes.join(' ');
-		}
-
-		if (typeof module !== 'undefined' && module.exports) {
-			module.exports = classNames;
-		} else if (true) {
-			// register as 'classnames', consistent with npm package name
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
-				return classNames;
-			}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-		} else {
-			window.classNames = classNames;
-		}
-	}());
-
-
-/***/ },
-/* 5 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 6 */
 /***/ function(module, exports) {
 
 	/**
