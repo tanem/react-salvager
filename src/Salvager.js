@@ -8,15 +8,28 @@ import './salvager.scss'
 
 export default class Salvager extends Component {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      bufferStart: 0,
-      isUpdating: false,
-      rowHeight: 0,
-      rowWrapperTransform: '',
-      visibleAreaOffsetHeight: 0
-    }
+  static propTypes = {
+    bufferSize: React.PropTypes.number,
+    data: React.PropTypes.array,
+    rowComponent: React.PropTypes.func,
+    rowClassName: React.PropTypes.string,
+    rowWrapperClassName: React.PropTypes.string,
+    spacerClassName: React.PropTypes.string,
+    visibleAreaClassName: React.PropTypes.string
+  }
+
+  static defaultProps = {
+    bufferSize: 50,
+    data: [],
+    rowComponent: Row
+  }
+
+  state = {
+    bufferStart: 0,
+    isUpdating: false,
+    rowHeight: 0,
+    rowWrapperTransform: '',
+    visibleAreaOffsetHeight: 0
   }
 
   render() {
@@ -92,20 +105,4 @@ export default class Salvager extends Component {
     })
   }
 
-}
-
-Salvager.propTypes = {
-  bufferSize: React.PropTypes.number,
-  data: React.PropTypes.array,
-  rowComponent: React.PropTypes.func,
-  rowClassName: React.PropTypes.string,
-  rowWrapperClassName: React.PropTypes.string,
-  spacerClassName: React.PropTypes.string,
-  visibleAreaClassName: React.PropTypes.string
-}
-
-Salvager.defaultProps = {
-  bufferSize: 50,
-  data: [],
-  rowComponent: Row
 }

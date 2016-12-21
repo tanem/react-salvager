@@ -1,6 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 
 export default class Row extends Component {
+
+  static propTypes = {
+    className: PropTypes.string
+  }
 
   render() {
     return (
@@ -16,8 +20,4 @@ export default class Row extends Component {
     return this.row.offsetHeight
   }
 
-}
-
-Row.propTypes = {
-  className: React.PropTypes.string
 }

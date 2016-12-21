@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 
 export default class Row extends Component {
 
+  static propTypes = {
+    className: React.PropTypes.string
+  }
+
   render() {
     return (
       <li
@@ -24,8 +28,4 @@ export default class Row extends Component {
     return '#fff'
   }
 
-}
-
-Row.propTypes = {
-  className: React.PropTypes.string
 }
