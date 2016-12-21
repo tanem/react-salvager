@@ -95,19 +95,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Salvager = function (_Component) {
 	  _inherits(Salvager, _Component);
 
-	  function Salvager(props) {
+	  function Salvager() {
+	    var _Object$getPrototypeO;
+
+	    var _temp, _this, _ret;
+
 	    _classCallCheck(this, Salvager);
 
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Salvager).call(this, props));
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
 
-	    _this.state = {
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Salvager)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
 	      bufferStart: 0,
 	      isUpdating: false,
 	      rowHeight: 0,
 	      rowWrapperTransform: '',
 	      visibleAreaOffsetHeight: 0
-	    };
-	    return _this;
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 
 	  _createClass(Salvager, [{
@@ -203,9 +208,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return Salvager;
 	}(_react.Component);
 
-	exports.default = Salvager;
-
-
 	Salvager.propTypes = {
 	  bufferSize: _react2.default.PropTypes.number,
 	  data: _react2.default.PropTypes.array,
@@ -215,12 +217,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  spacerClassName: _react2.default.PropTypes.string,
 	  visibleAreaClassName: _react2.default.PropTypes.string
 	};
-
 	Salvager.defaultProps = {
 	  bufferSize: 50,
 	  data: [],
 	  rowComponent: _Row2.default
 	};
+	exports.default = Salvager;
 
 /***/ },
 /* 1 */
@@ -286,12 +288,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return Row;
 	}(_react.Component);
 
-	exports.default = Row;
-
-
 	Row.propTypes = {
-	  className: _react2.default.PropTypes.string
+	  className: _react.PropTypes.string
 	};
+	exports.default = Row;
 
 /***/ },
 /* 3 */
