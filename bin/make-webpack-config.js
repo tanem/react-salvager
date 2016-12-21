@@ -1,6 +1,5 @@
 import path from 'path'
 import webpack from 'webpack'
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
 module.exports = function makeWebpackConfig(configType) {
   return Object.assign(
@@ -109,10 +108,6 @@ function getModule(configType) {
           test: /\.js$/,
           loader: 'babel',
           exclude: /node_modules/
-        },
-        {
-          test: /\.scss$/,
-          loader: ExtractTextPlugin.extract('style-loader', 'css!sass')
         }
       ]
     }
@@ -169,8 +164,7 @@ function getPlugins(configType) {
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.DefinePlugin({
           'process.env.NODE_ENV': JSON.stringify('production')
-        }),
-        new ExtractTextPlugin('salvager.css')
+        })
       ]
     }
   }
@@ -186,8 +180,7 @@ function getPlugins(configType) {
           screw_ie8: true,
           warnings: false
         }
-      }),
-      new ExtractTextPlugin('salvager.min.css')
+      })
     ]
   }
 }
