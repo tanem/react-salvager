@@ -3,21 +3,33 @@ import React, { Component, PropTypes } from 'react'
 export default class Row extends Component {
 
   static propTypes = {
-    className: PropTypes.string
+    children: PropTypes.any,
+    style: PropTypes.object
+  }
+
+  static defaultProps = {
+    children: null,
+    style: null
   }
 
   render() {
+    const {
+      children,
+      style
+    } = this.props
+
     return (
       <li
-        className={this.props.className}
-        ref={(ref) => this.row = ref}>
-        {this.props.children}
+        ref={row => this._row = row}
+        style={style}
+      >
+        {children}
       </li>
     )
   }
 
   getHeight() {
-    return this.row.offsetHeight
+    return this._row.offsetHeight
   }
 
 }

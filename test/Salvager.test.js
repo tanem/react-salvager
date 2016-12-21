@@ -7,8 +7,6 @@ import { expect } from 'chai'
 import $ from 'jquery'
 import Salvager from '../src/Salvager'
 
-import './salvager.test.scss'
-
 class Row extends Component {
   render() {
     return (
@@ -25,7 +23,6 @@ class Row extends Component {
 }
 
 describe('Salvager', () => {
-
   let root
   let visibleArea
   let rowWrapper
@@ -39,16 +36,19 @@ describe('Salvager', () => {
     document.body.appendChild(root)
     render(
       <Salvager
-        visibleAreaClassName={'Test-salvager'}
+        visibleAreaStyle={{
+          height: 40,
+          width: 100
+        }}
         bufferSize={4}
         data={[ 'Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6' ]}
-        rowComponent={Row}
+        Row={Row}
       />,
       root,
       () => {
-        visibleArea = $(root).find('.Salvager').get(0)
-        rowWrapper = $(root).find('.Salvager-rowWrapper').get(0)
-        spacer = $(root).find('.Salvager-spacer').get(0)
+        visibleArea = $(root).find('> div').get(0)
+        rowWrapper = $(root).find('ol').get(0)
+        spacer = $(root).find('div > div').get(0)
         scroll = (amount) => {
           visibleArea.scrollTop = amount
           ReactTestUtils.Simulate.scroll(visibleArea)
@@ -71,7 +71,7 @@ describe('Salvager', () => {
     scroll(10)
     expect(getTransform()).to.equal(orglTransform)
     expect(
-      [ ...$(root).find('.Salvager-row') ].map((row) => $(row).text())
+      [ ...$(root).find('li') ].map((row) => $(row).text())
     ).to.deep.equal(
       [ 'Item 1', 'Item 2', 'Item 3', 'Item 4' ]
     )
@@ -81,7 +81,7 @@ describe('Salvager', () => {
     scroll(40)
     expect(getTransform()).to.equal('translateY(20px)')
     expect(
-      [ ...$(root).find('.Salvager-row') ].map((row) => $(row).text())
+      [ ...$(root).find('li') ].map((row) => $(row).text())
     ).to.deep.equal(
       [ 'Item 2', 'Item 3', 'Item 4', 'Item 5' ]
     )

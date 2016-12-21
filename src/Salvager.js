@@ -1,27 +1,29 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import clamp from 'clamp'
 import isFunction from 'lodash.isfunction'
-import classNames from 'classnames'
-import Row from './Row'
 
-import './salvager.scss'
+import Row from './Row'
 
 export default class Salvager extends Component {
 
   static propTypes = {
-    bufferSize: React.PropTypes.number,
-    data: React.PropTypes.array,
-    rowComponent: React.PropTypes.func,
-    rowClassName: React.PropTypes.string,
-    rowWrapperClassName: React.PropTypes.string,
-    spacerClassName: React.PropTypes.string,
-    visibleAreaClassName: React.PropTypes.string
+    bufferSize: PropTypes.number,
+    data: PropTypes.array,
+    Row: PropTypes.func,
+    rowStyle: PropTypes.object,
+    rowWrapperStyle: PropTypes.object,
+    spacerStyle: PropTypes.object,
+    visibleAreaStyle: PropTypes.object
   }
 
   static defaultProps = {
     bufferSize: 50,
     data: [],
-    rowComponent: Row
+    Row,
+    rowStyle: null,
+    rowWrapperStyle: null,
+    spacerStyle: null,
+    visibleAreaStyle: null
   }
 
   state = {
@@ -33,22 +35,35 @@ export default class Salvager extends Component {
   }
 
   render() {
+    const {
+      rowWrapperStyle,
+      spacerStyle,
+      visibleAreaStyle
+    } = this.props
+
     return (
       <div
-        className={classNames('Salvager', this.props.visibleAreaClassName)}
         onScroll={this._scrollHandler.bind(this)}
-        ref={(ref) => this.visibleArea = ref}>
+        ref={ref => this.visibleArea = ref}
+        style={{
+          overflow: 'auto',
+          ...visibleAreaStyle
+        }}
+      >
         <ol
-          className={classNames('Salvager-rowWrapper', this.props.rowWrapperClassName)}
-          ref={(ref) => this.rowWrapper = ref}
+          ref={ref => this.rowWrapper = ref}
           style={{
+            ...rowWrapperStyle,
             transform: this.state.rowWrapperTransform
-          }}>
+          }}
+        >
           {this._buildRows()}
         </ol>
         <div
-          className={classNames('Salvager-spacer', this.props.spacerClassName)}
-          style={{ height: this._getSpacerHeight() }}
+          style={{
+            ...spacerStyle,
+            height: this._getSpacerHeight()
+          }}
         />
       </div>
     )
@@ -72,17 +87,32 @@ export default class Salvager extends Component {
   }
 
   _buildRows() {
+    const {
+      bufferSize,
+      data,
+      Row,
+      rowStyle
+    } = this.props
     const rows = []
-    for (let i = 0, j = this.props.bufferSize; i < j; i++) {
+
+    for (let i = 0, j = bufferSize; i < j; i++) {
       rows.push(
-        <this.props.rowComponent
-          className={classNames('Salvager-row', this.props.rowClassName)}
-          key={i}
-          ref={(ref) => { if (!this.row) this.row = ref }}>
-          {this.props.data[this.state.bufferStart + i]}
-        </this.props.rowComponent>
+        React.createElement(
+          Row,
+          {
+            key: i,
+            ref: (ref) => {
+              if (!this.row) {
+                this.row = ref
+              }
+            },
+            style: rowStyle
+          },
+          data[this.state.bufferStart + i]
+        )
       )
     }
+
     return rows
   }
 

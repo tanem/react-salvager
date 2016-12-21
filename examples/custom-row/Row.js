@@ -9,10 +9,10 @@ export default class Row extends Component {
   render() {
     return (
       <li
-        className={this.props.className}
         ref={(ref) => this.row = ref}
         style={{
-          backgroundColor: this._getBackgroundColour()
+          backgroundColor: this._getBackgroundColour(),
+          padding: 10
         }}>
         {this.props.children}
       </li>

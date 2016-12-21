@@ -33,19 +33,17 @@ Two usage examples are contained in the `examples/` dir. In order to view them, 
 - The `default-row` example uses the built-in `Row` component, and can be viewed at `http://localhost:3000/examples/default/`
 - The `custom-row` example uses a custom `Row` component, and can be viewed at `http://localhost:3000/examples/custom/`.
 
-By default this module ships with [a tiny amount of structural styling](src/salvager.scss). This can be extended according to your presentation requirements via the various `...ClassName` props. Both of the examples above utilise this method, so can be used as a reference. (If you're curious about the CSS naming convention being used, it's based on [SUIT CSS](https://github.com/suitcss/suit/blob/master/doc/naming-conventions.md) :bowtie:)
-
 ## API
 
 __Props__
 
 - `bufferSize` - *Optional* Number of rendered rows. Defaults to `50`.
 - `data` - *Optional* Data to render. Defaults to `[]`.
-- `rowComponent` - *Optional* Component used to render each row. Defaults to [`Row`](src/Row.js).
-- `rowClassName` - *Optional* Extra class added to each row.
-- `rowWrapperClassName` - *Optional* Extra class added to the row wrapper.
-- `spacerClassName` - *Optional* Extra class added to the spacer.
-- `visibleAreaClassName` - *Optional* Extra class added to the visible area (root node).
+- `Row` - *Optional* Component used to render each row. Defaults to [`Row`](src/Row.js).
+- `rowStyle` - *Optional* Extra style added to each row.
+- `rowWrapperStyle` - *Optional* Extra style added to the row wrapper.
+- `spacerStyle` - *Optional* Extra style added to the spacer.
+- `visibleAreaStyle` - *Optional* Extra style added to the visible area (root node).
 
 __Example__
 
@@ -57,11 +55,22 @@ __Example__
 <Salvager
   bufferSize={25}
   data={data}
-  rowComponent={Row}
-  rowClassName={'Example-salvagerRow'}
-  rowWrapperClassName={'Example-salvagerRowWrapper'}
-  spacerClassName={'Example-salvagerSpacer'}
-  visibleAreaClassName={'Example-salvager'}
+  Row={Row}
+  rowStyle={{
+    padding: 10
+  }}
+  rowWrapperStyle={{
+    listStyleType: 'none',
+    marginBottom: 0,
+    marginTop: 0,
+    paddingLeft: 0
+  }}
+  visibleAreaStyle={{
+    backgroundColor: '#fff',
+    border: '1px solid #ddd',
+    height: 400,
+    width: 300
+  }}
 />
 ```
 

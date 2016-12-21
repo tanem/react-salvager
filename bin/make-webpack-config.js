@@ -96,10 +96,6 @@ function getModule(configType) {
             test: /\.js$/,
             loaders: [ 'react-hot', 'babel' ],
             exclude: /node_modules/
-          },
-          {
-            test: /\.scss$/,
-            loader: 'style!css!sass'
           }
         ]
       }

@@ -164,10 +164,6 @@ function getWebpack() {
           {
             test: /\.json$/,
             loaders: [ 'json' ]
-          },
-          {
-            test: /\.scss$/,
-            loader: 'style!css!sass'
           }
         ]
       }
