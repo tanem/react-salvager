@@ -1,8 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Salvager from '../../src/Salvager';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Salvager from '../../src/Salvager'
 
-import './main.scss';
+import './main.scss'
 
 ReactDOM.render(
   <Salvager
@@ -13,10 +13,10 @@ ReactDOM.render(
     visibleAreaClassName={'DefaultRowExample-salvager'}
     />,
   document.querySelector('.Root')
-);
+)
 
 function getData(size) {
-  const data = [];
-  for (let i = 1; i <= size; i++) data.push('Item ' + i);
-  return data;
+  const data = []
+  for (let i = 1; i <= size; i++) data.push('Item ' + i)
+  return data
 }

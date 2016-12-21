@@ -1,4 +1,4 @@
-import nodeCLI from 'shelljs-nodecli';
-config.fatal = true;
+import nodeCLI from 'shelljs-nodecli'
+config.fatal = true
 
-nodeCLI.exec('eslint', '.');
+nodeCLI.exec('eslint', '.')

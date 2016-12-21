@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 export default class Row extends Component {
 
@@ -12,20 +12,20 @@ export default class Row extends Component {
         }}>
         {this.props.children}
       </li>
-    );
+    )
   }
 
   getHeight() {
-    return this.row.offsetHeight;
+    return this.row.offsetHeight
   }
 
   _getBackgroundColour() {
-    if (this.props.children.split(' ').pop() % 2 === 0) return '#eee';
-    return '#fff';
+    if (this.props.children.split(' ').pop() % 2 === 0) return '#eee'
+    return '#fff'
   }
 
 }
 
 Row.propTypes = {
   className: React.PropTypes.string
-};
+}

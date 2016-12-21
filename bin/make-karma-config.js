@@ -1,4 +1,4 @@
-import path from 'path';
+import path from 'path'
 
 module.exports = function makeKarmaConfig(configType) {
   return Object.assign(
@@ -16,26 +16,26 @@ module.exports = function makeKarmaConfig(configType) {
     getSingleRun(),
     getWebpack(),
     getWebpackMiddleware()
-  );
-};
+  )
+}
 
 function getBrowsers(configType) {
   if (configType === 'local') {
     return {
-      browsers: ['Chrome']
-    };
+      browsers: [ 'Chrome' ]
+    }
   }
 
   return {
     browsers: Object.keys(getCustomLaunchers('ci').customLaunchers)
-  };
+  }
 }
 
 function getBrowserNoActivityTimeout(configType) {
   if (configType === 'ci') {
     return {
       browserNoActivityTimeout: 300000
-    };
+    }
   }
 }
 
@@ -43,7 +43,7 @@ function getCaptureTimeout(configType) {
   if (configType === 'ci') {
     return {
       captureTimeout: 300000
-    };
+    }
   }
 }
 
@@ -55,7 +55,7 @@ function getCoverageReporter() {
         { type: 'lcovonly', subdir: '.' }
       ]
     }
-  };
+  }
 }
 
 function getCustomLaunchers(configType) {
@@ -91,40 +91,40 @@ function getCustomLaunchers(configType) {
           browserName: 'android'
         }
       }
-    };
+    }
   }
 }
 
 function getFiles() {
   return {
-    files: ['test/Salvager.test.js']
-  };
+    files: [ 'test/Salvager.test.js' ]
+  }
 }
 
 function getFrameworks() {
   return {
-    frameworks: ['mocha']
-  };
+    frameworks: [ 'mocha' ]
+  }
 }
 
 function getPreprocessors() {
   return {
     preprocessors: {
-      'test/Salvager.test.js': ['webpack', 'sourcemap']
+      'test/Salvager.test.js': [ 'webpack', 'sourcemap' ]
     }
-  };
+  }
 }
 
 function getReporters(configType) {
   if (configType === 'local') {
     return {
-      reporters: ['spec', 'coverage']
-    };
+      reporters: [ 'spec', 'coverage' ]
+    }
   }
 
   return {
-    reporters: ['spec', 'saucelabs', 'coverage', 'coveralls']
-  };
+    reporters: [ 'spec', 'saucelabs', 'coverage', 'coveralls' ]
+  }
 }
 
 function getSauceLabs(configType) {
@@ -134,14 +134,14 @@ function getSauceLabs(configType) {
         public: 'public',
         recordScreenshots: false
       }
-    };
+    }
   }
 }
 
 function getSingleRun() {
   return {
     singleRun: true
-  };
+  }
 }
 
 function getWebpack() {
@@ -152,7 +152,7 @@ function getWebpack() {
         loaders: [
           {
             test: /\.js$/,
-            loaders: ['babel'],
+            loaders: [ 'babel' ],
             exclude: /node_modules/
           },
           {
@@ -163,7 +163,7 @@ function getWebpack() {
           },
           {
             test: /\.json$/,
-            loaders: ['json']
+            loaders: [ 'json' ]
           },
           {
             test: /\.scss$/,
@@ -172,7 +172,7 @@ function getWebpack() {
         ]
       }
     }
-  };
+  }
 }
 
 function getWebpackMiddleware() {
@@ -180,5 +180,5 @@ function getWebpackMiddleware() {
     webpackMiddleware: {
       noInfo: true
     }
-  };
+  }
 }

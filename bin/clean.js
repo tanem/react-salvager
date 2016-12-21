@@ -1,12 +1,12 @@
-import nodeCLI from 'shelljs-nodecli';
-config.fatal = true;
+import nodeCLI from 'shelljs-nodecli'
+config.fatal = true
 
-const [ , , target] = process.argv;
+const [ , , target ] = process.argv
 
 if (target === 'build') {
-  nodeCLI.exec('rimraf', 'dist lib');
+  nodeCLI.exec('rimraf', 'dist lib')
 }
 
 if (target === 'cov') {
-  nodeCLI.exec('rimraf', 'coverage');
+  nodeCLI.exec('rimraf', 'coverage')
 }

@@ -1,6 +1,6 @@
-import path from 'path';
-import webpack from 'webpack';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import path from 'path'
+import webpack from 'webpack'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
 module.exports = function makeWebpackConfig(configType) {
   return Object.assign(
@@ -12,8 +12,8 @@ module.exports = function makeWebpackConfig(configType) {
     getModule(configType),
     getOutput(configType),
     getPlugins(configType)
-  );
-};
+  )
+}
 
 function getDevServer(configType) {
   if (configType === 'dev') {
@@ -31,7 +31,7 @@ function getDevServer(configType) {
           chunks: false
         }
       }
-    };
+    }
   }
 }
 
@@ -39,7 +39,7 @@ function getDevtool(configType) {
   if (configType === 'dev') {
     return {
       devtool: 'cheap-module-eval-source-map'
-    };
+    }
   }
 }
 
@@ -58,12 +58,12 @@ function getEntry(configType) {
           './examples/default-row/main.js'
         ]
       }
-    };
+    }
   }
 
   return {
     entry: './src/Salvager.js'
-  };
+  }
 }
 
 function getExternals(configType) {
@@ -83,7 +83,7 @@ function getExternals(configType) {
           amd: 'react-dom'
         }
       }
-    };
+    }
   }
 }
 
@@ -94,7 +94,7 @@ function getModule(configType) {
         loaders: [
           {
             test: /\.js$/,
-            loaders: ['react-hot', 'babel'],
+            loaders: [ 'react-hot', 'babel' ],
             exclude: /node_modules/
           },
           {
@@ -103,7 +103,7 @@ function getModule(configType) {
           }
         ]
       }
-    };
+    }
   }
 
   return {
@@ -120,7 +120,7 @@ function getModule(configType) {
         }
       ]
     }
-  };
+  }
 }
 
 function getOutput(configType) {
@@ -131,7 +131,7 @@ function getOutput(configType) {
         filename: '[name].bundle.js',
         publicPath: '/static/'
       }
-    };
+    }
   }
 
   if (configType === 'umd') {
@@ -142,7 +142,7 @@ function getOutput(configType) {
         path: 'dist',
         filename: 'salvager.js'
       }
-    };
+    }
   }
 
   return {
@@ -152,7 +152,7 @@ function getOutput(configType) {
       path: 'dist',
       filename: 'salvager.min.js'
     }
-  };
+  }
 }
 
 function getPlugins(configType) {
@@ -164,7 +164,7 @@ function getPlugins(configType) {
           'process.env.NODE_ENV': JSON.stringify('development')
         })
       ]
-    };
+    }
   }
 
   if (configType === 'umd') {
@@ -176,7 +176,7 @@ function getPlugins(configType) {
         }),
         new ExtractTextPlugin('salvager.css')
       ]
-    };
+    }
   }
 
   return {
@@ -193,5 +193,5 @@ function getPlugins(configType) {
       }),
       new ExtractTextPlugin('salvager.min.css')
     ]
-  };
+  }
 }

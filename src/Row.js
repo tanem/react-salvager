@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 export default class Row extends Component {
 
@@ -9,15 +9,15 @@ export default class Row extends Component {
         ref={(ref) => this.row = ref}>
         {this.props.children}
       </li>
-    );
+    )
   }
 
   getHeight() {
-    return this.row.offsetHeight;
+    return this.row.offsetHeight
   }
 
 }
 
 Row.propTypes = {
   className: React.PropTypes.string
-};
+}

@@ -1,12 +1,12 @@
-import 'shelljs/global';
-config.fatal = true;
+import 'shelljs/global'
+config.fatal = true
 
-import { Server } from 'karma';
-import makeKarmaConfig from './make-karma-config';
+import { Server } from 'karma'
+import makeKarmaConfig from './make-karma-config'
 
-const [ , , testType = 'ci'] = process.argv;
+const [ , , testType = 'ci' ] = process.argv
 
-exec('npm run lint');
-exec('npm run clean -- cov');
+exec('npm run lint')
+exec('npm run clean -- cov')
 
-new Server(makeKarmaConfig(testType), exit).start();
+new Server(makeKarmaConfig(testType), exit).start()
