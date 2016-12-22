@@ -34,48 +34,14 @@ export default class Salvager extends Component {
     visibleAreaOffsetHeight: 0
   }
 
-  render() {
-    const {
-      rowWrapperStyle,
-      spacerStyle,
-      visibleAreaStyle
-    } = this.props
-
-    return (
-      <div
-        onScroll={this._scrollHandler.bind(this)}
-        ref={ref => this.visibleArea = ref}
-        style={{
-          overflow: 'auto',
-          ...visibleAreaStyle
-        }}
-      >
-        <ol
-          ref={ref => this.rowWrapper = ref}
-          style={{
-            ...rowWrapperStyle,
-            transform: this.state.rowWrapperTransform
-          }}
-        >
-          {this._buildRows()}
-        </ol>
-        <div
-          style={{
-            ...spacerStyle,
-            height: this._getSpacerHeight()
-          }}
-        />
-      </div>
-    )
-  }
-
   componentDidMount() {
-    if (!isFunction(this.row.getHeight)) {
+    if (!isFunction(this._row.getHeight)) {
       throw new Error('Row component must define a getHeight method.')
     }
+
     this.setState({
-      rowHeight: this.row.getHeight(),
-      visibleAreaOffsetHeight: this.visibleArea.offsetHeight
+      rowHeight: this._row.getHeight(),
+      visibleAreaOffsetHeight: this._visibleArea.offsetHeight
     })
   }
 
@@ -86,7 +52,7 @@ export default class Salvager extends Component {
     )
   }
 
-  _buildRows() {
+  renderRows() {
     const {
       bufferSize,
       data,
@@ -101,9 +67,9 @@ export default class Salvager extends Component {
           Row,
           {
             key: i,
-            ref: (ref) => {
-              if (!this.row) {
-                this.row = ref
+            ref: row => {
+              if (!this._row) {
+                this._row = row
               }
             },
             style: rowStyle
@@ -116,23 +82,82 @@ export default class Salvager extends Component {
     return rows
   }
 
-  _getSpacerHeight() {
-    return (this.props.data.length - this.props.bufferSize) * this.state.rowHeight
+  getSpacerHeight() {
+    const {
+      bufferSize,
+      data
+    } = this.props
+
+    return (data.length - bufferSize) * this.state.rowHeight
   }
 
-  _scrollHandler() {
-    if (this.state.isUpdating) return
-    this.setState({ isUpdating: true })
+  handleScroll = () => {
+    const {
+      bufferSize,
+      data
+    } = this.props
 
-    const midPoint = this.visibleArea.scrollTop + this.state.visibleAreaOffsetHeight / 2
-    const bufferMidPoint = Math.floor(midPoint / this.state.rowHeight)
-    let bufferStart = clamp(Math.floor(bufferMidPoint - this.props.bufferSize / 2), 0, this.props.data.length - this.props.bufferSize)
+    const {
+      rowHeight,
+      visibleAreaOffsetHeight
+    } = this.state
+
+    if (this.state.isUpdating) {
+      return
+    }
+
+    this.setState({
+      isUpdating: true
+    })
+
+    const midPoint = this._visibleArea.scrollTop + visibleAreaOffsetHeight / 2
+    const bufferMidPoint = Math.floor(midPoint / rowHeight)
+    let bufferStart = clamp(
+      Math.floor(bufferMidPoint - bufferSize / 2),
+      0,
+      data.length - bufferSize
+    )
 
     this.setState({
       bufferStart,
       isUpdating: false,
-      rowWrapperTransform: `translateY(${bufferStart * this.state.rowHeight}px)`
+      rowWrapperTransform: `translateY(${bufferStart * rowHeight}px)`
     })
+  }
+
+  render() {
+    const {
+      rowWrapperStyle,
+      spacerStyle,
+      visibleAreaStyle
+    } = this.props
+
+    return (
+      <div
+        onScroll={this.handleScroll}
+        ref={visibleArea => this._visibleArea = visibleArea}
+        style={{
+          overflow: 'auto',
+          ...visibleAreaStyle
+        }}
+      >
+        <ol
+          ref={rowWrapper => this._rowWrapper = rowWrapper}
+          style={{
+            ...rowWrapperStyle,
+            transform: this.state.rowWrapperTransform
+          }}
+        >
+          {this.renderRows()}
+        </ol>
+        <div
+          style={{
+            ...spacerStyle,
+            height: this.getSpacerHeight()
+          }}
+        />
+      </div>
+    )
   }
 
 }

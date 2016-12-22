@@ -9,10 +9,14 @@ import Salvager from '../src/Salvager'
 
 class Row extends Component {
   render() {
+    const {
+      children,
+      className
+    } = this.props
+
     return (
-      <li
-        className={this.props.className}>
-        {this.props.children}
+      <li className={className}>
+        {children}
       </li>
     )
   }
