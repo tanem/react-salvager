@@ -26,7 +26,7 @@ ReactDOM.render(
 )
 
 function getData(size) {
-  const data = []
-  for (let i = 1; i <= size; i++) data.push('Item ' + i)
-  return data
+  return new Array(size)
+    .fill(0)
+    .map((v, i) => `Item ${i + 1}`)
 }
