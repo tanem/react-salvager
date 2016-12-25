@@ -1,6 +1,6 @@
 import 'babel-polyfill'
 
-import React, { Component } from 'react'
+import React from 'react'
 import { render } from 'react-dom'
 import ReactTestUtils from 'react-addons-test-utils'
 import { expect } from 'chai'
