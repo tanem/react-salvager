@@ -12,10 +12,6 @@ export default class Row extends Component {
     style: null
   }
 
-  getHeight() {
-    return this._row.offsetHeight
-  }
-  
   render() {
     const {
       children,
@@ -23,10 +19,7 @@ export default class Row extends Component {
     } = this.props
 
     return (
-      <li
-        ref={row => this._row = row}
-        style={style}
-      >
+      <li style={style}>
         {children}
       </li>
     )

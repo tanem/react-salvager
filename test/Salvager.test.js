@@ -5,26 +5,9 @@ import { render } from 'react-dom'
 import ReactTestUtils from 'react-addons-test-utils'
 import { expect } from 'chai'
 import $ from 'jquery'
+
 import Salvager from '../src/Salvager'
-
-class Row extends Component {
-  render() {
-    const {
-      children,
-      className
-    } = this.props
-
-    return (
-      <li className={className}>
-        {children}
-      </li>
-    )
-  }
-
-  getHeight() {
-    return 20
-  }
-}
+import Row from '../src/Row'
 
 describe('Salvager', () => {
   let root
@@ -47,6 +30,7 @@ describe('Salvager', () => {
         bufferSize={4}
         data={[ 'Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6' ]}
         Row={Row}
+        rowStyle={{ height: 20 }}
       />,
       root,
       () => {

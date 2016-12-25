@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
+import ReactDOM from 'react-dom'
 import clamp from 'clamp'
-import isFunction from 'lodash.isfunction'
 
 import Row from './Row'
 
@@ -35,12 +35,8 @@ export default class Salvager extends Component {
   }
 
   componentDidMount() {
-    if (!isFunction(this._row.getHeight)) {
-      throw new Error('Row component must define a getHeight method.')
-    }
-
     this.setState({
-      rowHeight: this._row.getHeight(),
+      rowHeight: this.getRowHeight(ReactDOM.findDOMNode(this._rowInstance)),
       visibleAreaOffsetHeight: this._visibleArea.offsetHeight
     })
   }
@@ -50,36 +46,6 @@ export default class Salvager extends Component {
       nextState.bufferStart !== this.state.bufferStart ||
       nextState.rowHeight !== this.state.rowHeight
     )
-  }
-
-  renderRows() {
-    const {
-      bufferSize,
-      data,
-      Row,
-      rowStyle
-    } = this.props
-    const rows = []
-
-    for (let i = 0, j = bufferSize; i < j; i++) {
-      rows.push(
-        React.createElement(
-          Row,
-          {
-            key: i,
-            ref: row => {
-              if (!this._row) {
-                this._row = row
-              }
-            },
-            style: rowStyle
-          },
-          data[this.state.bufferStart + i]
-        )
-      )
-    }
-
-    return rows
   }
 
   getSpacerHeight() {
@@ -123,6 +89,40 @@ export default class Salvager extends Component {
       isUpdating: false,
       rowWrapperTransform: `translateY(${bufferStart * rowHeight}px)`
     })
+  }
+
+  getRowHeight(rowDOMNode) {
+    return rowDOMNode.offsetHeight
+  }
+
+  renderRows() {
+    const {
+      bufferSize,
+      data,
+      Row,
+      rowStyle
+    } = this.props
+    const rows = []
+
+    for (let i = 0, j = bufferSize; i < j; i++) {
+      rows.push(
+        React.createElement(
+          Row,
+          {
+            key: i,
+            ref: (rowInstance) => {
+              if (!this._rowInstance) {
+                this._rowInstance = rowInstance
+              }
+            },
+            style: rowStyle
+          },
+          data[this.state.bufferStart + i]
+        )
+      )
+    }
+
+    return rows
   }
 
   render() {
