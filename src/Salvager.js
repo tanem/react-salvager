@@ -102,10 +102,10 @@ export default class Salvager extends Component {
       Row,
       rowStyle
     } = this.props
-    const rows = []
 
-    for (let i = 0, j = bufferSize; i < j; i++) {
-      rows.push(
+    return new Array(bufferSize)
+      .fill(0)
+      .map((v, i) =>
         React.createElement(
           Row,
           {
@@ -120,9 +120,6 @@ export default class Salvager extends Component {
           data[this.state.bufferStart + i]
         )
       )
-    }
-
-    return rows
   }
 
   render() {
