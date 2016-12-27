@@ -7,7 +7,18 @@ import { expect } from 'chai'
 import $ from 'jquery'
 
 import Salvager from '../src/Salvager'
-import Row from '../src/Row'
+
+const getRows = (number) =>
+  new Array(number)
+    .fill(0)
+    .map((v, i) =>
+      <div
+        key={`${i + 1}`}
+        style={{ height: 20 }}
+      >
+        {`Item ${i + 1}`}
+      </div>
+    )
 
 describe('Salvager', () => {
   let root
@@ -28,15 +39,14 @@ describe('Salvager', () => {
           width: 100
         }}
         bufferSize={4}
-        data={[ 'Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6' ]}
-        Row={Row}
-        rowStyle={{ height: 20 }}
-      />,
+      >
+        {getRows(6)}
+      </Salvager>,
       root,
       () => {
         visibleArea = $(root).find('> div').get(0)
-        rowWrapper = $(root).find('ol').get(0)
-        spacer = $(root).find('div > div').get(0)
+        rowWrapper = $(root).find('> div > div:first-child').get(0)
+        spacer = $(root).find('> div > div:last-child').get(0)
         scroll = (amount) => {
           visibleArea.scrollTop = amount
           ReactTestUtils.Simulate.scroll(visibleArea)
@@ -59,7 +69,7 @@ describe('Salvager', () => {
     scroll(10)
     expect(getTransform()).to.equal(orglTransform)
     expect(
-      [ ...$(root).find('li') ].map((row) => $(row).text())
+      [ ...$(root).find('> div > div:first-child > div') ].map((row) => $(row).text())
     ).to.deep.equal(
       [ 'Item 1', 'Item 2', 'Item 3', 'Item 4' ]
     )
@@ -69,7 +79,7 @@ describe('Salvager', () => {
     scroll(40)
     expect(getTransform()).to.equal('translateY(20px)')
     expect(
-      [ ...$(root).find('li') ].map((row) => $(row).text())
+      [ ...$(root).find('> div > div:first-child > div') ].map((row) => $(row).text())
     ).to.deep.equal(
       [ 'Item 2', 'Item 3', 'Item 4', 'Item 5' ]
     )

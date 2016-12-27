@@ -18,12 +18,12 @@ export default class Row extends Component {
 
   render() {
     return (
-      <li style={{
+      <div style={{
         backgroundColor: this.getBackgroundColour(),
         padding: 10
       }}>
         {this.props.children}
-      </li>
+      </div>
     )
   }
 

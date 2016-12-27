@@ -30,19 +30,15 @@ If you use these, make sure you have already included React as a dependency.
 
 ## Usage
 
-Two usage examples are contained in the `examples/` dir. In order to view them, you'll first need to kick off the server via `npm start`. Note that the server itself is actually a [webpack-dev-server](https://webpack.github.io/docs/webpack-dev-server.html) with [react hot loading](https://github.com/gaearon/react-hot-loader) enabled, so you can use this setup for development too.
+There is a working example contained in the `example/` dir. To view it, start the server via `npm start`, then point a browser at `http://localhost:3000/example/`.
 
-- The `default-row` example uses the built-in `Row` component, and can be viewed at `http://localhost:3000/examples/default/`
-- The `custom-row` example uses a custom `Row` component, and can be viewed at `http://localhost:3000/examples/custom/`.
+Note that the server itself is actually a [webpack-dev-server](https://webpack.github.io/docs/webpack-dev-server.html) with [react hot loading](https://github.com/gaearon/react-hot-loader) enabled, so you can use this setup for development too.
 
 ## API
 
 __Props__
 
-- `bufferSize` - *Optional* Number of rendered rows. Defaults to `50`.
-- `data` - *Optional* Data to render. Defaults to `[]`.
-- `Row` - *Optional* Component used to render each row. Defaults to [`Row`](src/Row.js).
-- `rowStyle` - *Optional* Extra style added to each row.
+- `bufferSize` - *Optional* Number of row rendered to the DOM. Defaults to `50`.
 - `rowWrapperStyle` - *Optional* Extra style added to the row wrapper.
 - `spacerStyle` - *Optional* Extra style added to the spacer.
 - `visibleAreaStyle` - *Optional* Extra style added to the visible area (root node).
@@ -50,17 +46,10 @@ __Props__
 __Example__
 
 ```js
-// Assuming:
-// - Data is a large array of items
-// - Row is a custom component
+// Note that row items can be any valid React element.
 
 <Salvager
   bufferSize={25}
-  data={data}
-  Row={Row}
-  rowStyle={{
-    padding: 10
-  }}
   rowWrapperStyle={{
     listStyleType: 'none',
     marginBottom: 0,
@@ -73,7 +62,13 @@ __Example__
     height: 400,
     width: 300
   }}
-/>
+>
+  <div key="1">Item 1</div>
+  <div key="2">Item 2</div>
+  ...
+  <div key="9999">Item 9999</div>
+  <div key="10000">Item 10000<div>
+</Salvager>
 ```
 
 ## Testing

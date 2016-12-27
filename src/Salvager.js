@@ -2,15 +2,10 @@ import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom'
 import clamp from 'clamp'
 
-import Row from './Row'
-
 export default class Salvager extends Component {
 
   static propTypes = {
     bufferSize: PropTypes.number,
-    data: PropTypes.array,
-    Row: PropTypes.func,
-    rowStyle: PropTypes.object,
     rowWrapperStyle: PropTypes.object,
     spacerStyle: PropTypes.object,
     visibleAreaStyle: PropTypes.object
@@ -18,9 +13,6 @@ export default class Salvager extends Component {
 
   static defaultProps = {
     bufferSize: 50,
-    data: [],
-    Row,
-    rowStyle: null,
     rowWrapperStyle: null,
     spacerStyle: null,
     visibleAreaStyle: null
@@ -49,20 +41,14 @@ export default class Salvager extends Component {
   }
 
   getSpacerHeight() {
-    const {
-      bufferSize,
-      data
-    } = this.props
+    const { bufferSize } = this.props
+    const { rowHeight } = this.state
 
-    return (data.length - bufferSize) * this.state.rowHeight
+    return (this._childrenArray.length - bufferSize) * rowHeight
   }
 
   handleScroll = () => {
-    const {
-      bufferSize,
-      data
-    } = this.props
-
+    const { bufferSize } = this.props
     const {
       rowHeight,
       visibleAreaOffsetHeight
@@ -81,7 +67,7 @@ export default class Salvager extends Component {
     let bufferStart = clamp(
       Math.floor(bufferMidPoint - bufferSize / 2),
       0,
-      data.length - bufferSize
+      this._childrenArray.length - bufferSize
     )
 
     this.setState({
@@ -95,35 +81,33 @@ export default class Salvager extends Component {
     return rowDOMNode.offsetHeight
   }
 
-  renderRows() {
-    const {
-      bufferSize,
-      data,
-      Row,
-      rowStyle
-    } = this.props
+  renderRows(children) {
+    const { bufferSize } = this.props
+    const { bufferStart } = this.state
 
-    return new Array(bufferSize)
-      .fill(0)
-      .map((v, i) =>
-        React.createElement(
-          Row,
+    if (!this._childrenArray) {
+      this._childrenArray = React.Children.toArray(children)
+    }
+
+    return this._childrenArray
+      .slice(bufferStart, bufferStart + bufferSize)
+      .map((child) =>
+        React.cloneElement(
+          child,
           {
-            key: i,
             ref: (rowInstance) => {
               if (!this._rowInstance) {
                 this._rowInstance = rowInstance
               }
-            },
-            style: rowStyle
-          },
-          data[this.state.bufferStart + i]
+            }
+          }
         )
       )
   }
 
   render() {
     const {
+      children,
       rowWrapperStyle,
       spacerStyle,
       visibleAreaStyle
@@ -138,15 +122,15 @@ export default class Salvager extends Component {
           ...visibleAreaStyle
         }}
       >
-        <ol
+        <div
           ref={rowWrapper => this._rowWrapper = rowWrapper}
           style={{
             ...rowWrapperStyle,
             transform: this.state.rowWrapperTransform
           }}
         >
-          {this.renderRows()}
-        </ol>
+          {this.renderRows(children)}
+        </div>
         <div
           style={{
             ...spacerStyle,

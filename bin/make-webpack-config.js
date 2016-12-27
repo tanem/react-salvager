@@ -45,18 +45,11 @@ function getDevtool(configType) {
 function getEntry(configType) {
   if (configType === 'dev') {
     return {
-      entry: {
-        'custom-row': [
-          'webpack-dev-server/client?http://localhost:3000',
-          'webpack/hot/only-dev-server',
-          './examples/custom-row/main.js'
-        ],
-        'default-row': [
-          'webpack-dev-server/client?http://localhost:3000',
-          'webpack/hot/only-dev-server',
-          './examples/default-row/main.js'
-        ]
-      }
+      entry: [
+        'webpack-dev-server/client?http://localhost:3000',
+        'webpack/hot/only-dev-server',
+        './example/main.js'
+      ]
     }
   }
 
@@ -112,7 +105,7 @@ function getOutput(configType) {
   if (configType === 'dev') {
     return {
       output: {
-        path: path.resolve('examples'),
+        path: path.resolve('example'),
         filename: '[name].bundle.js',
         publicPath: '/static/'
       }
