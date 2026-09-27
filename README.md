@@ -1,5 +1,7 @@
 # react-salvager
 
+> **Unmaintained.** This project is no longer maintained and the repository is archived. The npm package is deprecated.
+
 [![build status](https://img.shields.io/travis/tanem/react-salvager/master.svg?style=flat-square)](https://travis-ci.org/tanem/react-salvager)
 [![coverage status](https://img.shields.io/coveralls/tanem/react-salvager.svg?style=flat-square)](https://coveralls.io/github/tanem/react-salvager)
 [![npm version](https://img.shields.io/npm/v/react-salvager.svg?style=flat-square)](https://www.npmjs.com/package/react-salvager)
